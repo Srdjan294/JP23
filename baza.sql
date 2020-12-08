@@ -10,22 +10,50 @@ create table auto(
 	registracija varchar(20) not null
 );
 
-create table evidencija(
+#Izračun potrošnje auta prema natočenim litrama goriva i prema natočenom gorivu za određene novce
+create table potrosnja(
 	sifra	int not null primary key auto_increment,
 	datum	datetime not null,
-	punjenjeULitrama int not null,
-	cijena  int not null,
+	natocenoLitara int not null,
+	cijenaL  int not null,
+	ukupnaCijena int not null,
 	pocetnoStanje int not null,
 	zavrsnoStanje int not null,
 	udaljenost int not null, 
-	potrosnjaPoPrijedenimKm int not null
+	potrosnjaLPoPrijedenimKm int not null, #po 100km
+	potrosnjaKnPoPrijedenimKm int not null #po 100km
 );
 
-create table auto_evidencija(
+#Izračun prelaska kilometara prema natočenim litrama goriva i prema natočenom gorivu za određene novce
+create table izracunPrelaskaKm(
+	sifra int not null primary key auto_increment,
+	natocenoLitara int not null,
+	cijenaL  int not null,
+	ukupnaCijena int not null,
+	potrosnjaAuta int not null,
+	izracunKM_L int not null, #za koliko natocenoLitara
+	izracunKM_Kn int not null #za koliko ukupnaCijena
+);
+
+#Izračun natočenih litara i cijene goriva prema prijeđenim kilometrima
+create table izracunGoriva(
+	sifra int not null primary key auto_increment,
+	udaljenost int not null,
+	cijenaL int not null,
+	potrosnjaAuta int not null,
+	izracunL int not null, #za koliku udaljenost treba litara goriva
+	ukupnaCijena int not null #za koliku udaljenost treba kuna
+);
+
+create table evidencija(
 	sifra int not null primary key auto_increment,
 	auto int not null,
-	evidencija int not null
+	potrosnja int not null,
+	izracunPrelaskaKm int not null,
+	izracunGoriva int not null
 );
 
-alter table auto_evidencija add foreign key (auto) references auto(sifra);
-alter table auto_evidencija add foreign key (evidencija) references evidencija(sifra);
+alter table evidencija add foreign key (auto) references auto(sifra);
+alter table evidencija add foreign key (potrosnja) references potrosnja(sifra);
+alter table evidencija add foreign key (izracunPrelaskaKm) references izracunPrelaskaKm(sifra);
+alter table evidencija add foreign key (izracunGoriva) references izracunGoriva(sifra);
