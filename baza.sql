@@ -20,8 +20,8 @@ create table potrosnja(
 	pocetnoStanje int not null,
 	zavrsnoStanje int not null,
 	udaljenost int not null, 
-	potrosnjaLPoPrijedenimKm int not null, #po 100km
-	potrosnjaKnPoPrijedenimKm int not null #po 100km
+	potrosnjaLPoPrijedenimKm int not null, #natocenoLitara/udaljenost * 100(km)
+	potrosnjaKnPoPrijedenimKm int not null #ukupnaCijena/udaljenost * 100(km)
 );
 
 #Izračun prelaska kilometara prema natočenim litrama goriva i prema natočenom gorivu za određene novce
@@ -31,8 +31,8 @@ create table izracunPrelaskaKm(
 	cijenaL  int not null,
 	ukupnaCijena int not null,
 	potrosnjaAuta int not null,
-	izracunKM_L int not null, #za koliko natocenoLitara
-	izracunKM_Kn int not null #za koliko ukupnaCijena
+	izracunKM_L int not null, #100/potrosnjaAuta * natocenoLitara
+	izracunKM_Kn int not null #ukupnaCijena / cijenaL = natocenoLitara * 100/potrosnjaAuta
 );
 
 #Izračun natočenih litara i cijene goriva prema prijeđenim kilometrima
@@ -41,8 +41,8 @@ create table izracunGoriva(
 	udaljenost int not null,
 	cijenaL int not null,
 	potrosnjaAuta int not null,
-	izracunL int not null, #za koliku udaljenost treba litara goriva
-	ukupnaCijena int not null #za koliku udaljenost treba kuna
+	izracunL int not null, #potrosnjaAuta/100 * udaljenost
+	ukupnaCijena int not null #potrosnjaAuta/100 * udaljenost * cijenaL
 );
 
 create table evidencija(
