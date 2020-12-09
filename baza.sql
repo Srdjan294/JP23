@@ -17,8 +17,7 @@ create table evidencija(
 	natocenoLitara int not null,
 	ukupnaCijena int not null,
 	pocetnoStanje int not null,
-	zavrsnoStanje int not null,
-	udaljenost int not null	
+	zavrsnoStanje int not null
 );
 
 create table oznaka(
