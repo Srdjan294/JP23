@@ -1,3 +1,3 @@
-module edunova02 {
+module Edunova02 {
 	requires java.desktop;
 }
