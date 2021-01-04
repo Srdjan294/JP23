@@ -23,6 +23,7 @@ public class Zadatak3 {
 				System.out.println(i);
 			}
 		}
+		s.close();
 		
 	}
 		

@@ -64,6 +64,8 @@ public class Zadatak4 {
 		else {
 			System.out.println("Zbrajanje nije moguæe");
 		}
+		
+		s.close();
 	}
 
 }
