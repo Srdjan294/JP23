@@ -18,7 +18,7 @@ public class Zadatak8 {
 		
 		double s = (a + b + c) / 2;
 		
-		System.out.println( Math.sqrt(s * (s - a) * (s - b) * (s - c)));
+		System.out.println( Math.sqrt(s * (s - a) * (s - b) * (s - c))); //Heronova formula za izraèun površine trokuta
 	}
 
 }
