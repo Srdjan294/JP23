@@ -7,7 +7,8 @@ create table auto(
 	model 	varchar(50) not null,
 	godiste int not null,
 	volumenRezervoara int not null,
-	registracija varchar(20) not null
+	registracija varchar(20) not null,
+	vlasnik int not null
 );
 
 create table evidencija(
@@ -30,6 +31,18 @@ create table evidencija_oznaka(
 	oznaka int not null
 );
 
+create table vlasnik(
+	sifra int not null primary key auto_increment,
+	ime varchar(50) not null,
+	prezime varchar(50) not null,
+	oib char(11) not null,
+	brojMobitela int not null,
+	email varchar(100) not null,
+	datumRodenja datetime not null,
+	spol varchar(10) not null
+);
+
 alter table evidencija add foreign key (auto) references auto(sifra);
 alter table evidencija_oznaka add foreign key (evidencija) references evidencija(sifra);
 alter table evidencija_oznaka add foreign key (oznaka) references oznaka(sifra);
+alter table auto add foreign key (vlasnik) references vlasnik(sifra);
