@@ -28,7 +28,6 @@ public class Zadatak03 {
 			if(a > 0) break;
 		}
 		
-		in.close();
 		return a;
 		
 	}
