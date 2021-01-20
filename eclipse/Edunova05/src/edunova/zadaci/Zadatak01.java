@@ -28,11 +28,11 @@ public class Zadatak01 {
 //		JOptionPane.showInputDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
 		
 		
-		String[] answers = {"first","second"};
-		
-		
-		//JOptionPane.showInputDialog(parentComponent, message, title, messageType, icon, selectionValues, initialSelectionValue)
-		JOptionPane.showInputDialog(null, message, title, JOptionPane.ERROR_MESSAGE, JOptionPane.CANCEL_OPTION, answers , initialSelectionValue);
+		//zadnji optionPane neznam
+//		Object[] possibleValues = { "First", "Second", "Third" };
+//		
+//		//JOptionPane.showInputDialog(parentComponent, message, title, messageType, icon, selectionValues, initialSelectionValue)
+//		JOptionPane.showInputDialog(null, message, title, JOptionPane.ERROR_MESSAGE, JOptionPane.CANCEL_OPTION, ovo neznam , initialSelectionValue);
 	}
 
 }

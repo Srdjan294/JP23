@@ -7,5 +7,10 @@ public class Zadatak04 {
 	// metoda vraæa sumu svih elemenata primljenog niza
 
 	// Prikazati poziv metode tako da ispisani rezultat bude 12
+	
+	public static void main(String[] args) {
+		 
+		
+	}
 
 }

@@ -10,7 +10,7 @@ public class Zadatak03 {
 	// kada se to dogodi metoda tako unesenu vrijednost vrati 
 	// onome koji ju je pozvao
 	public static void main(String[] args) {
-		unesiBroj();
+		System.out.println(unesiBroj());
 	}
 		
 	
@@ -18,15 +18,19 @@ public class Zadatak03 {
 		
 		Scanner in = new Scanner(System.in);
 		
+		int a = -1;
+		
 		
 		
 		for(;;) {
 			System.out.println("Unesi broj: ");
-			int a = in.nextInt();
+			a = in.nextInt();
 			if(a > 0) break;
 		}
 		
-		return 0;
+		in.close();
+		return a;
+		
 	}
 
 }
