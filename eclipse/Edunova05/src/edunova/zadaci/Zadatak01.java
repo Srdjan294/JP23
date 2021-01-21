@@ -9,30 +9,24 @@ public class Zadatak01 {
 	
 	public static void main(String[] args) {
 		
-		String message = "Ovo je poruka";
-//		String answer = JOptionPane.showInputDialog(message);
-//		System.out.println(answer);
+		//JOptionPane.showInputDialog(message);
+		//JOptionPane.showInputDialog("Ovo je poruka");
 		
-//		String answer = JOptionPane.showInputDialog(null, message);
-//		System.out.println(answer);
+		//JOptionPane.showInputDialog(parentComponent, message);
+		//JOptionPane.showInputDialog(null, "Ovo je poruka");
 		
-		int initialSelectionValue = 1;
-//		JOptionPane.showInputDialog(message, initialSelectionValue);
+		//JOptionPane.showInputDialog(message, initialSelectionValue);
+		//JOptionPane.showInputDialog("Ovo je poruka", 1);
 		
-//		//JOptionPane.showInputDialog(parentComponent, message, initialSelectionValue);
-//		JOptionPane.showInputDialog(null, message, initialSelectionValue);
+		//JOptionPane.showInputDialog(parentComponent, message, initialSelectionValue);
+		//JOptionPane.showInputDialog(null, "Ovo je poruka", 1);
 		
-		String title = "naziv";
+		//JOptionPane.showInputDialog(parentComponent, message, title, messageType);
+		//JOptionPane.showInputDialog(null, "Ovo je poruka", "Naziv", JOptionPane.WARNING_MESSAGE);
 		
-//		//JOptionPane.showInputDialog(parentComponent, message, title, messageType);
-//		JOptionPane.showInputDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
-		
-		
-		//zadnji optionPane neznam
-//		Object[] possibleValues = { "First", "Second", "Third" };
-//		
-//		//JOptionPane.showInputDialog(parentComponent, message, title, messageType, icon, selectionValues, initialSelectionValue)
-//		JOptionPane.showInputDialog(null, message, title, JOptionPane.ERROR_MESSAGE, JOptionPane.CANCEL_OPTION, ovo neznam , initialSelectionValue);
+		//JOptionPane.showInputDialog(parentComponent, message, title, messageType, icon, selectionValues, initialSelectionValue);
+		String[] izbor = {"da", "ne"};
+		JOptionPane.showInputDialog(null, "Ovo je izbor", "Naslov", JOptionPane.PLAIN_MESSAGE, null, izbor, izbor[1]);
 	}
 
 }
