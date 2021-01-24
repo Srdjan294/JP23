@@ -72,6 +72,19 @@ public class Student {
 		Student.brojInstanci++;
 	}
 	
+	//preoptereæivanje konstruktora
+	public Student() {
+		this.brojIndeksa = 1;
+		this.ime = "";
+		this.prezime = "";
+	}
+	
+	public Student(String prezime) {
+		this.brojIndeksa = 1;
+		this.ime = "";
+		this.prezime = prezime;
+	}
+	
 	
 
 }

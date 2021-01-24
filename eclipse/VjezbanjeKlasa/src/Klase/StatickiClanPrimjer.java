@@ -9,6 +9,10 @@ public class StatickiClanPrimjer {
 		Student s3 = new Student(2312,"Maja","Majiæ");
 		System.out.println("Kreirane su " + Student.getBrojInstanci() + " instance");
 		
+		System.out.println(s1.dohvatiPodatke());
+		System.out.println(s2.dohvatiPodatke());
+		System.out.println(s3.dohvatiPodatke());
+		
 	}
 
 }
