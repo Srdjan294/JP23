@@ -50,7 +50,7 @@ public class Start {
 		
 		
 		for(Pravokutnik p : pravokutnici) { 
-			System.out.println(p.getNaziv() + ": " + p.opseg() + " - " + p.getMjesto().getNaziv());
+			System.out.println(p.getNaziv() + ": " + p.opseg() + " - " + p.getMjesto());
 		}
 		
 		
