@@ -7,6 +7,8 @@ public class ModifikatorPrimjer {
 //		s.setIme("Pero");
 //		s.setPrezime("Periæ");
 //		s.setBrojIndeksa(2310);
+		
+		//pomoæu konstruktora
 		Student s = new Student(2310,"Pero","Periæ");
 		s.prijaviIspit("Java");
 		s.prijaviIspit("OOP");

@@ -9,6 +9,8 @@ public class Student {
 	private String prezime;
 	private ArrayList<String> prijavljeniIspiti = new ArrayList<String>();
 	
+	public static int brojInstanci;
+	
 	//ID prijavljenog ispita ubacuje u listu
 	public void prijaviIspit(String ispit) {
 		//implementacija metode - primjena poslovne logike
@@ -52,12 +54,22 @@ public class Student {
 	public void setPrijavljeniIspiti(ArrayList<String> prijavljeniIspiti) {
 		this.prijavljeniIspiti = prijavljeniIspiti;
 	}
+	
+
+	public static int getBrojInstanci() {
+		return brojInstanci;
+	}
+
+	public static void setBrojInstanci(int brojInstanci) {
+		Student.brojInstanci = brojInstanci;
+	}
 
 	public Student(int brojIndeksa, String ime, String prezime) {
 		super();
 		this.brojIndeksa = brojIndeksa;
 		this.ime = ime;
 		this.prezime = prezime;
+		Student.brojInstanci++;
 	}
 	
 	
