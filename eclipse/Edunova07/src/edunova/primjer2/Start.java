@@ -17,7 +17,7 @@ public class Start {
 		mjesto.setNaziv("Osijek");
 		mjesto.setPostanskiBroj("31000");
 		
-		//kupac.setMjesto(mjesto);
+		kupac.setMjesto(mjesto);
 		
 		racun.setKupac(kupac);
 		
