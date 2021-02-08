@@ -68,11 +68,23 @@ public class Start {
 		case 3: 
 			promjeniVlasnika();
 			break;
+		case 4: 
+			obrisiVlasnika();
+			break;
 		case 5: 
 			izbornik();
 			break;
 		}
 		
+	}
+
+	private void obrisiVlasnika() {
+		sviVlasnici();
+		int odabir = Pomocno.ucitajCijeliBroj("Odaberite redni broj vlasnika",1,vlasnici.size())-1;
+		
+		
+		vlasnici.remove(odabir);
+		vlasnikIzbornik();
 	}
 
 	private void promjeniVlasnika() {
