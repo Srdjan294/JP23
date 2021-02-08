@@ -1,5 +1,8 @@
 package auto.crud;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Pomocno {
@@ -52,6 +55,21 @@ public class Pomocno {
 				continue;
 			}
 			return s;
+		}
+	}
+	
+	public static String ucitajDatum(String poruka) {
+		
+		while(true) {
+			System.out.println(poruka + ": ");
+			String datum = ulaz.nextLine();
+			try {
+				Date datumRodenja = new SimpleDateFormat("dd-MM-yyyy").parse(datum);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return datum;
 		}
 	}
 }

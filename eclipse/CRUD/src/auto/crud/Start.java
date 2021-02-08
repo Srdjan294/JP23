@@ -82,7 +82,6 @@ public class Start {
 		sviVlasnici();
 		int odabir = Pomocno.ucitajCijeliBroj("Odaberite redni broj vlasnika",1,vlasnici.size())-1;
 		
-		
 		vlasnici.remove(odabir);
 		vlasnikIzbornik();
 	}
@@ -115,6 +114,7 @@ public class Start {
 		v.setBrojMobitela(Pomocno.ucitajString("Unesi broj mobitela vlasnika"));
 		v.setEmail(Pomocno.ucitajString("Unesi email vlasnika"));
 		v.setSpol(Pomocno.ucitajString("Unesi spol vlasnika"));
+		v.setDatumRodenja(Pomocno.ucitajDatum("Unesi datum roðenja vlasnika"));
 		vlasnici.add(v);
 		spremi();
 		vlasnikIzbornik();
@@ -141,13 +141,14 @@ public class Start {
 		System.out.println("++++++++++++++++++++++++++++++");
 		for(int i = 0; i < vlasnici.size(); i++) {
 			var v = vlasnici.get(i);
-			System.out.printf((i+1) + ". %s, %s, %s, %s, %s, %s \n",
+			System.out.printf((i+1) + ". %s, %s, %s, %s, %s, %s, %s \n",
 								v.getIme(),
 								v.getPrezime(),
 								v.getOib(),
 								v.getBrojMobitela(),
 								v.getEmail(),
-								v.getSpol());
+								v.getSpol(),
+								v.getDatumRodenja());
 		}
 		System.out.println("++++++++++++++++++++++++++++++");
 	}
