@@ -77,6 +77,10 @@ public class Start {
 		v.setSifra(Pomocno.ucitajCijeliBroj("Unesi šifru vlasnika"));
 		v.setIme(Pomocno.ucitajString("Unesi ime vlasnika"));
 		v.setPrezime(Pomocno.ucitajString("Unesi prezime vlasnika"));
+		v.setOib(Pomocno.ucitajString("Unesi oib vlasnika"));
+		v.setBrojMobitela(Pomocno.ucitajString("Unesi broj mobitela vlasnika"));
+		v.setEmail(Pomocno.ucitajString("Unesi email vlasnika"));
+		v.setSpol(Pomocno.ucitajString("Unesi spol vlasnika"));
 		vlasnici.add(v);
 		spremi();
 		vlasnikIzbornik();
@@ -98,13 +102,23 @@ public class Start {
 		
 		
 	}
-
-	private void prikaziVlasnike() {
+	
+	private void sviVlasnici() {
 		System.out.println("++++++++++++++++++++++++++++++");
 		for(Vlasnik vlasnik: vlasnici) {
-			System.out.println(vlasnik.getIme() + " " + vlasnik.getPrezime());
+			System.out.printf("%s, %s, %s, %s, %s, %s \n",
+								vlasnik.getIme(),
+								vlasnik.getPrezime(),
+								vlasnik.getOib(),
+								vlasnik.getBrojMobitela(),
+								vlasnik.getEmail(),
+								vlasnik.getSpol());
 		}
 		System.out.println("++++++++++++++++++++++++++++++");
+	}
+
+	private void prikaziVlasnike() {
+		sviVlasnici();
 		vlasnikIzbornik();
 		
 	}
