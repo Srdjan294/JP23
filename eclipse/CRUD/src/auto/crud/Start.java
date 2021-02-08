@@ -65,11 +65,33 @@ public class Start {
 		case 2: 
 			dodajNovogVlasnika();
 			break;
+		case 3: 
+			promjeniVlasnika();
+			break;
 		case 5: 
 			izbornik();
 			break;
 		}
 		
+	}
+
+	private void promjeniVlasnika() {
+		sviVlasnici();
+		int odabir = Pomocno.ucitajCijeliBroj("Odaberite redni broj vlasnika",1,vlasnici.size())-1;
+		
+		var v = vlasnici.get(odabir);
+		
+		v.setSifra(Pomocno.ucitajCijeliBroj("Šifra (" + v.getSifra() + ")"));
+		v.setIme(Pomocno.ucitajString("Ime (" + v.getIme() + ")"));
+		v.setPrezime(Pomocno.ucitajString("Prezime (" + v.getPrezime() + ")"));
+		v.setOib(Pomocno.ucitajString("OIB (" + v.getOib() + ")"));
+		v.setBrojMobitela(Pomocno.ucitajString("Broj mobitela (" + v.getBrojMobitela() + ")"));
+		v.setEmail(Pomocno.ucitajString("Email (" + v.getEmail() + ")"));
+		v.setSpol(Pomocno.ucitajString("Spol (" + v.getSpol() + ")"));
+		
+		vlasnici.set(odabir, v);
+		spremi();
+		vlasnikIzbornik();
 	}
 
 	private void dodajNovogVlasnika() {
@@ -105,14 +127,15 @@ public class Start {
 	
 	private void sviVlasnici() {
 		System.out.println("++++++++++++++++++++++++++++++");
-		for(Vlasnik vlasnik: vlasnici) {
-			System.out.printf("%s, %s, %s, %s, %s, %s \n",
-								vlasnik.getIme(),
-								vlasnik.getPrezime(),
-								vlasnik.getOib(),
-								vlasnik.getBrojMobitela(),
-								vlasnik.getEmail(),
-								vlasnik.getSpol());
+		for(int i = 0; i < vlasnici.size(); i++) {
+			var v = vlasnici.get(i);
+			System.out.printf((i+1) + ". %s, %s, %s, %s, %s, %s \n",
+								v.getIme(),
+								v.getPrezime(),
+								v.getOib(),
+								v.getBrojMobitela(),
+								v.getEmail(),
+								v.getSpol());
 		}
 		System.out.println("++++++++++++++++++++++++++++++");
 	}
