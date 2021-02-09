@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import com.google.gson.reflect.TypeToken;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 
 public class Start {
@@ -79,17 +80,18 @@ public class Start {
 	}
 
 	private void obrisiVlasnika() {
-		sviVlasnici();
-		int odabir = Pomocno.ucitajCijeliBroj("Odaberite redni broj vlasnika",1,vlasnici.size())-1;
-		
-		vlasnici.remove(odabir);
+		vlasnici.remove(odaberiVlasnika());
+		spremi();
 		vlasnikIzbornik();
 	}
 
-	private void promjeniVlasnika() {
+	private int odaberiVlasnika() {
 		sviVlasnici();
-		int odabir = Pomocno.ucitajCijeliBroj("Odaberite redni broj vlasnika",1,vlasnici.size())-1;
-		
+		return Pomocno.ucitajCijeliBroj("Odaberite redni broj vlasnika",1,vlasnici.size())-1;
+	}
+
+	private void promjeniVlasnika() {
+		var odabir = odaberiVlasnika();
 		var v = vlasnici.get(odabir);
 		
 		v.setSifra(Pomocno.ucitajCijeliBroj("Šifra (" + v.getSifra() + ")"));
@@ -121,7 +123,7 @@ public class Start {
 	}
 
 	private void spremi() {
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		
 		try {
 			FileWriter fw = new FileWriter(new File(PUTANJA_VLASNICI));
