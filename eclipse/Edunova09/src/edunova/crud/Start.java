@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import com.google.gson.reflect.TypeToken;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 
 public class Start {
@@ -70,6 +71,8 @@ public class Start {
 		case 3: 
 			promjeniSmjer();
 			break;
+		case 4:
+			obrisiSmjer();
 		case 5: 
 			izbornik();
 			break;
@@ -77,15 +80,29 @@ public class Start {
 		
 	}
 
-	private void promjeniSmjer() {
-		sviSmjerovi();
-		int odabir = Pomocno.ucitajCijeliBroj("Odaberite redni broj stavke", 1, smjerovi.size())-1;
+	private void obrisiSmjer() {
 		
+		smjerovi.remove(odaberiSmjer());
+		spremi();
+		smjerIzbornik();
+		
+	}
+	
+	private int odaberiSmjer() {
+		sviSmjerovi();
+		return Pomocno.ucitajCijeliBroj("Odaberite redni broj stavke", 1, smjerovi.size())-1;
+		
+		
+	}
+
+	private void promjeniSmjer() {
+		var odabir = odaberiSmjer();
 		var s = smjerovi.get(odabir);
 		
 		s.setSifra(Pomocno.ucitajCijeliBroj("Šifra (" + s.getSifra() + ")"));
 		s.setNaziv(Pomocno.ucitajString("Naziv (" + s.getNaziv() + ")"));
 		
+		// ova linija i nije potrebna. Tu je da pokaže set metodu na List suèelju:
 		smjerovi.set(odabir, s);
 		spremi();
 		smjerIzbornik();
@@ -95,9 +112,31 @@ public class Start {
 		Smjer s = new Smjer();
 		s.setSifra(Pomocno.ucitajCijeliBroj("Unesi šifru smjera"));
 		s.setNaziv(Pomocno.ucitajString("Unesi naziv smjera"));
+		s.setGrupe(ucitajGrupe());
 		smjerovi.add(s);
 		spremi();
 		smjerIzbornik();
+	}
+
+	private List<Grupa> ucitajGrupe() {
+		List<Grupa> grupe = new ArrayList<>();
+		
+		if(Pomocno.ucitajCijeliBroj("1 za unos grupa")!=1) {
+			return grupe;
+		}
+		Grupa g;
+		while(true) {
+			System.out.println("Unos nove grupe");
+			g = new Grupa();
+			g.setNaziv(Pomocno.ucitajString("Naziv grupe"));
+			g.setDatumPocetka(Pomocno.ucitajDatum("Unesite datum grupe"));
+			grupe.add(g);
+			if(Pomocno.ucitajCijeliBroj("0 za prekid unosa")==0) {
+				break;
+			}
+		}
+		return grupe;
+		
 	}
 
 	private void stavkeSmjerIzbornika() {
@@ -114,6 +153,13 @@ public class Start {
 		for(int i = 0; i < smjerovi.size(); i++) {
 			var s = smjerovi.get(i);
 			System.out.println((i+1) + ". " + s.getNaziv());
+			if(s.getGrupe().isEmpty()) {
+				continue;
+			}
+			System.out.println("\tGrupe: ");
+			for(Grupa g: s.getGrupe()) {
+				System.out.println("\t\t" + g.getNaziv());
+			}
 		}
 		
 		System.out.println("+++++++++++++++++++++++");
@@ -134,7 +180,7 @@ public class Start {
 	}
 	
 	private void spremi() {
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		//System.out.println(gson.toJson(smjerovi));
 		
 		try {

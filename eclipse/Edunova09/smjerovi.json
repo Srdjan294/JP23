@@ -1,1 +1,34 @@
-[{"sifra":1,"naziv":"java prog"},{"sifra":2,"naziv":"php prog"},{"sifra":1,"naziv":"12234333432"}]
+[
+  {
+    "sifra": 1,
+    "naziv": "java prog",
+    "grupe": []
+  },
+  {
+    "sifra": 2,
+    "naziv": "php prog",
+    "grupe": []
+  },
+  {
+    "sifra": 1,
+    "naziv": "qqqqq",
+    "grupe": [
+      {
+        "naziv": "jp23"
+      },
+      {
+        "naziv": "jp24"
+      }
+    ]
+  },
+  {
+    "sifra": 3,
+    "naziv": "novi",
+    "grupe": [
+      {
+        "naziv": "g1",
+        "datumPocetka": "Feb 2, 2020, 12:00:00 AM"
+      }
+    ]
+  }
+]
