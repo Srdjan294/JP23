@@ -10,7 +10,7 @@ public class Vlasnik {
 	private String oib;
 	private String brojMobitela;
 	private String email;
-	private String datumRodenja;
+	private Date datumRodenja;
 	private String spol;
 	
 	
@@ -38,12 +38,6 @@ public class Vlasnik {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDatumRodenja() {
-		return datumRodenja;
-	}
-	public void setDatumRodenja(String datumRodenja) {
-		this.datumRodenja = datumRodenja;
-	}
 	public int getSifra() {
 		return sifra;
 	}
@@ -61,6 +55,12 @@ public class Vlasnik {
 	}
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
+	}
+	public Date getDatumRodenja() {
+		return datumRodenja;
+	}
+	public void setDatumRodenja(Date datumRodenja) {
+		this.datumRodenja = datumRodenja;
 	}
 	
 	

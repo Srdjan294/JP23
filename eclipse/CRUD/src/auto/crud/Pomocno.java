@@ -1,6 +1,5 @@
 package auto.crud;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -8,6 +7,7 @@ import java.util.Scanner;
 public class Pomocno {
 
 	private static final Scanner ulaz = new Scanner(System.in);
+	private static final SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 	
 	public static int ucitajCijeliBroj(String poruka) {
 		
@@ -58,18 +58,16 @@ public class Pomocno {
 		}
 	}
 	
-	public static String ucitajDatum(String poruka) {
+	public static Date ucitajDatum(String poruka) {
 		
 		while(true) {
-			System.out.println(poruka + ": ");
-			String datum = ulaz.nextLine();
 			try {
-				Date datumRodenja = new SimpleDateFormat("dd-MM-yyyy").parse(datum);
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println(poruka);
+				return df.parse(ulaz.nextLine());
+			} catch (Exception e) {
+				System.out.println("Datum nije u dobrom formatu");
+				System.out.println("Primjer unosa: " + df.format(new Date()));
 			}
-			return datum;
 		}
 	}
 }

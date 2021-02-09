@@ -97,6 +97,7 @@ public class Start {
 		v.setSifra(Pomocno.ucitajCijeliBroj("Šifra (" + v.getSifra() + ")"));
 		v.setIme(Pomocno.ucitajString("Ime (" + v.getIme() + ")"));
 		v.setPrezime(Pomocno.ucitajString("Prezime (" + v.getPrezime() + ")"));
+		v.setDatumRodenja(Pomocno.ucitajDatum("Datum roðenja (" + v.getDatumRodenja() + ")"));
 		v.setOib(Pomocno.ucitajString("OIB (" + v.getOib() + ")"));
 		v.setBrojMobitela(Pomocno.ucitajString("Broj mobitela (" + v.getBrojMobitela() + ")"));
 		v.setEmail(Pomocno.ucitajString("Email (" + v.getEmail() + ")"));
@@ -109,14 +110,16 @@ public class Start {
 
 	private void dodajNovogVlasnika() {
 		Vlasnik v = new Vlasnik();
+		
 		v.setSifra(Pomocno.ucitajCijeliBroj("Unesi šifru vlasnika"));
 		v.setIme(Pomocno.ucitajString("Unesi ime vlasnika"));
 		v.setPrezime(Pomocno.ucitajString("Unesi prezime vlasnika"));
+		v.setDatumRodenja(Pomocno.ucitajDatum("Unesi datum roðenja vlasnika"));
 		v.setOib(Pomocno.ucitajString("Unesi oib vlasnika"));
 		v.setBrojMobitela(Pomocno.ucitajString("Unesi broj mobitela vlasnika"));
 		v.setEmail(Pomocno.ucitajString("Unesi email vlasnika"));
 		v.setSpol(Pomocno.ucitajString("Unesi spol vlasnika"));
-		v.setDatumRodenja(Pomocno.ucitajDatum("Unesi datum roðenja vlasnika"));
+		
 		vlasnici.add(v);
 		spremi();
 		vlasnikIzbornik();
