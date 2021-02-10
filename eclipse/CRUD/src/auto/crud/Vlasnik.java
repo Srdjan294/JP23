@@ -1,6 +1,8 @@
 package auto.crud;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Vlasnik {
 	
@@ -12,6 +14,7 @@ public class Vlasnik {
 	private String email;
 	private Date datumRodenja;
 	private String spol;
+	private List<Auto> auti = new ArrayList<>();
 	
 	
 	public String getSpol() {
@@ -61,6 +64,12 @@ public class Vlasnik {
 	}
 	public void setDatumRodenja(Date datumRodenja) {
 		this.datumRodenja = datumRodenja;
+	}
+	public List<Auto> getAuti() {
+		return auti;
+	}
+	public void setAuti(List<Auto> auti) {
+		this.auti = auti;
 	}
 	
 	

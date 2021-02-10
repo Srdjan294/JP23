@@ -1,22 +1,21 @@
 [
   {
     "sifra": 1,
-    "ime": "Ivan",
-    "prezime": "Ivanoviæ",
-    "oib": "22222222222",
-    "brojMobitela": "09822233333",
-    "email": "ivan@gmail.com",
-    "datumRodenja": "Feb 9, 1990, 12:00:00 AM",
-    "spol": "m"
-  },
-  {
-    "sifra": 2,
-    "ime": "Miro",
-    "prezime": "Miric",
-    "oib": "33333333333",
-    "brojMobitela": "0983334444",
-    "email": "miro@gmail.com",
-    "datumRodenja": "Mar 3, 1990, 12:00:00 AM",
-    "spol": "m"
+    "ime": "Ivo",
+    "prezime": "Ivic",
+    "oib": "11111111111",
+    "brojMobitela": "0982221111",
+    "email": "ivo@gmail.com",
+    "datumRodenja": "Dec 12, 2020, 12:00:00 AM",
+    "spol": "m",
+    "auti": [
+      {
+        "sifra": 1,
+        "model": "Peugeot",
+        "godiste": 1999,
+        "volumenRezervoara": 45,
+        "registracija": "os-222-os"
+      }
+    ]
   }
 ]

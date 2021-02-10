@@ -120,9 +120,35 @@ public class Start {
 		v.setEmail(Pomocno.ucitajString("Unesi email vlasnika"));
 		v.setSpol(Pomocno.ucitajString("Unesi spol vlasnika"));
 		
+		v.setAuti(ucitajAute());
+		
 		vlasnici.add(v);
 		spremi();
 		vlasnikIzbornik();
+	}
+
+	private List<Auto> ucitajAute() {
+		List<Auto> auti = new ArrayList<>();
+		
+		if(Pomocno.ucitajCijeliBroj("1 za unos auta")!=1) {
+			return auti;
+		}
+		Auto a;
+		while(true) {
+			System.out.println("Unos novog auta");
+			a = new Auto();
+			a.setSifra(Pomocno.ucitajCijeliBroj("Šifra auta"));
+			a.setModel(Pomocno.ucitajString("Model auta"));
+			a.setGodiste(Pomocno.ucitajCijeliBroj("Godiste auta"));
+			a.setVolumenRezervoara(Pomocno.ucitajCijeliBroj("Volumen rezervoara"));
+			a.setRegistracija(Pomocno.ucitajString("Registracija auta"));	
+			auti.add(a);
+			
+			if(Pomocno.ucitajCijeliBroj("0 za prekid unosa")==0) {
+				break;
+			}	
+		}
+		return auti;
 	}
 
 	private void spremi() {
@@ -154,6 +180,14 @@ public class Start {
 								v.getEmail(),
 								v.getSpol(),
 								v.getDatumRodenja());
+			
+			if(v.getAuti().isEmpty()) {
+				continue;
+			}
+			System.out.println("\tAuti: ");
+			for(Auto a: v.getAuti()) {
+				System.out.println("\t\t" + a.getModel());
+			}
 		}
 		System.out.println("++++++++++++++++++++++++++++++");
 	}
