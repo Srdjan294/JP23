@@ -43,9 +43,11 @@
 
 
         <!-- Ovdje navodimo mapirane klase -->
-        <mapping class="edunova.jp23.model.Kupac" />
-        <mapping class="edunova.jp23.model.Dokument" /> 
-        <!--<mapping class="edunova.jp23.model.Eftitet" />--> 
+        <mapping class="edunova.jp23.model.Smjer" />
+        <mapping class="edunova.jp23.model.Polaznik" /> 
+        <mapping class="edunova.jp23.model.Predavac" />
+        <mapping class="edunova.jp23.model.Grupa" />  
+         
         
     </session-factory>
 </hibernate-configuration>

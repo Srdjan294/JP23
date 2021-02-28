@@ -6,30 +6,23 @@
 package edunova.jp23.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
  * @author srdja
  */
 @Entity
-public class Kupac extends Entitet {
+public class Predavac extends Osoba {
     
-    
-    private String naziv;
+    private String iban;
 
-    
-
-    public String getNaziv() {
-        return naziv;
+    public String getIban() {
+        return iban;
     }
 
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
-    
     
     
 }
