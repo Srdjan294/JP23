@@ -19,7 +19,7 @@ public class Start {
         Session s = HibernateUtil.getSession();
         
         
-        //System.out.println(s.getMetamodel().getEntities().size());
+        System.out.println(s.getMetamodel().getEntities().size());
         
         s.beginTransaction();
         
