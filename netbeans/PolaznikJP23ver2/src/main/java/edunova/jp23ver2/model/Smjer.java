@@ -18,7 +18,7 @@ public class Smjer extends Entitet {
     
     @Column(columnDefinition = "varchar(50)", name="naziv")
     private String naziv;
-    @Column(columnDefinition = "varchar(50)", name="ime")
+    @Column(columnDefinition = "decimal(18,2)", name="cijena")
     private BigDecimal cijena;
     @Column(columnDefinition = "int(11)", name="trajanje")
     private Integer trajanje;

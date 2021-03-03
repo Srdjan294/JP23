@@ -5,19 +5,27 @@
  */
 package edunova.jp23ver2.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author srdja
  */
 @Entity
+@Table(name = "predavac")
 public class Predavac extends Osoba {
     
-    @Column(columnDefinition = "varchar(50)", name="iban")
+    @Column(columnDefinition = "varchar(50)")
     private String iban;
-    @Column(columnDefinition = "int(11)", name="osoba")
+    @ManyToOne
+    @JoinColumn(name = "osoba", referencedColumnName = "sifra", nullable = false)
     private Osoba osoba;
 
     public String getIban() {
@@ -35,6 +43,10 @@ public class Predavac extends Osoba {
     public void setOsoba(Osoba osoba) {
         this.osoba = osoba;
     }
+
+    
+
+    
     
     
     

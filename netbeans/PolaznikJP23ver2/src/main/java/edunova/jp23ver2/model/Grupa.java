@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -23,10 +26,10 @@ public class Grupa extends Entitet {
     @Column(columnDefinition = "varchar(20)", name="naziv")
     private String naziv;
     @ManyToOne
-    @Column(columnDefinition = "int(11)", name="smjer")
+    @JoinColumn(name = "smjer", nullable = false)
     private Smjer smjer;
     @ManyToOne
-    @Column(columnDefinition = "int(11)", name="predavac")
+    @JoinColumn(name = "predavac", nullable = false)
     private Predavac predavac;
     @Column(columnDefinition = "datetime", name="datumpocetka")
     private Date datumPocetka;

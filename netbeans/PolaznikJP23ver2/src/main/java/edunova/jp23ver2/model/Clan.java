@@ -7,6 +7,8 @@ package edunova.jp23ver2.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -15,9 +17,11 @@ import javax.persistence.Entity;
 @Entity
 public class Clan extends Entitet {
     
-    @Column(columnDefinition = "int(11)", name="grupa")
+    @ManyToOne
+    @JoinColumn(name = "grupa", referencedColumnName = "sifra")
     private Grupa grupa;
-    @Column(columnDefinition = "int(11)", name="polaznik")
+    @ManyToOne
+    @JoinColumn(name = "polaznik", referencedColumnName = "sifra")
     private Polaznik polaznik;
 
     public Grupa getGrupa() {

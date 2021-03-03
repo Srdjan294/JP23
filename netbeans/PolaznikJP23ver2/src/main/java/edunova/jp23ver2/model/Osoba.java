@@ -7,21 +7,23 @@ package edunova.jp23ver2.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author srdja
  */
 @Entity
+@Table(name = "osoba")
 public class Osoba extends Entitet {
     
-    @Column(columnDefinition = "varchar(50)", name="ime")
+    @Column(columnDefinition = "varchar(50)", nullable = false)
     private String ime;
-    @Column(columnDefinition = "varchar(50)", name="prezime")
+    @Column(columnDefinition = "varchar(50)", nullable = false)
     private String prezime;
-    @Column(columnDefinition = "char(11)", name="oib")
+    @Column(columnDefinition = "char(11)")
     private String oib;
-    @Column(columnDefinition = "varchar(50)", name="email")
+    @Column(columnDefinition = "varchar(50)", nullable = false)
     private String email;
 
     public String getIme() {
