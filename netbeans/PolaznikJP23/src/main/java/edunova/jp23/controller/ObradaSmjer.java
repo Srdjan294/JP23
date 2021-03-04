@@ -31,17 +31,17 @@ public class ObradaSmjer extends Obrada<Smjer> {
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-           kontrolaNaziv();
+           //kontrolaNaziv();
            kontrolaCijena();
     }
 
     @Override
-    protected void kontrolaUpdate() {
-        
+    protected void kontrolaUpdate() throws EdunovaException {
+        kontrolaCreate();
     }
 
     @Override
-    protected void kontrolaDelete() {
+    protected void kontrolaDelete() throws EdunovaException {
         
     }
     

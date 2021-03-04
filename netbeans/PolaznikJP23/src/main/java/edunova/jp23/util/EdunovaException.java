@@ -15,7 +15,13 @@ public class EdunovaException extends Exception {
     
     public EdunovaException(String poruka){
         super();
-        this.poruka = poruka;
+        if(poruka != null && poruka.length()>2 &&
+                poruka.endsWith(", ")){
+            this.poruka=poruka.substring(0,poruka.length()-2);
+        }else{
+            this.poruka=poruka;
+        }
+        
     }
 
     public String getPoruka() {
