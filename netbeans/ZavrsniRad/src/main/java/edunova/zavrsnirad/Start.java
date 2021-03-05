@@ -5,6 +5,9 @@
  */
 package edunova.zavrsnirad;
 
+import edunova.zavrsnirad.util.HibernateUtil;
+import org.hibernate.Session;
+
 /**
  *
  * @author srdja
@@ -13,7 +16,14 @@ public class Start {
     
     public static void main(String[] args) {
         
-        System.out.println("Zavrsni rad prvi commit");
+         Session s = HibernateUtil.getSession();
+        
+        
+        System.out.println(s.getMetamodel().getEntities().size());
+        
+        s.beginTransaction();
+        
+        s.getTransaction().commit();
     }
     
 }

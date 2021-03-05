@@ -43,8 +43,10 @@
 
 
         <!-- Ovdje navodimo mapirane klase -->
-        <!--<mapping class="edunova.jp23.model.--> 
-         
+        <mapping class="edunova.zavrsnirad.model.Vlasnik" />
+        <mapping class="edunova.zavrsnirad.model.Auto" />
+        <mapping class="edunova.zavrsnirad.model.Evidencija" />
+        <mapping class="edunova.zavrsnirad.model.Oznaka" /> 
         
     </session-factory>
 </hibernate-configuration>
