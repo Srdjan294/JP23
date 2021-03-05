@@ -8,8 +8,11 @@ package edunova.zavrsnirad.model;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -25,7 +28,10 @@ public class Evidencija extends Entitet {
     private int ukupnaCijena;
     private int pocetnoStanje;
     private int zavrsnoStanje;
-    @ManyToOne
+    @OneToOne
+    @JoinTable(name = "evidencija_oznaka",
+            joinColumns = { @JoinColumn(name = "evidencija") },
+            inverseJoinColumns = { @JoinColumn(name = "oznaka") } )
     private Oznaka oznaka;
 
     public Auto getAuto() {
