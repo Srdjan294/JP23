@@ -45,9 +45,8 @@
         <!-- Ovdje navodimo mapirane klase -->
         <mapping class="edunova.jp23ver2.model.Osoba" />
         <mapping class="edunova.jp23ver2.model.Smjer" />
-        <mapping class="edunova.jp23ver2.model.Polaznik" /> 
+        <mapping class="edunova.jp23ver2.model.Polaznik" />
         <mapping class="edunova.jp23ver2.model.Predavac" />
-        <mapping class="edunova.jp23ver2.model.Grupa" />  
-        <mapping class="edunova.jp23ver2.model.Clan" />
+        <mapping class="edunova.jp23ver2.model.Grupa" />
     </session-factory>
 </hibernate-configuration>

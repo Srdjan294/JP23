@@ -10,33 +10,42 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author srdja
  */
 @Entity
+@Table(name = "grupa")
 public class Grupa extends Entitet {
     
-    @Column(columnDefinition = "varchar(20)", name="naziv")
+    @JoinTable(name = "grupa")
+    @Column(columnDefinition = "varchar(20)", nullable = false)
     private String naziv;
     @ManyToOne
     @JoinColumn(name = "smjer", nullable = false)
     private Smjer smjer;
     @ManyToOne
-    @JoinColumn(name = "predavac", nullable = false)
+    @JoinColumn(name = "predavac")
     private Predavac predavac;
-    @Column(columnDefinition = "datetime", name="datumpocetka")
-    private Date datumPocetka;
-    @Column(columnDefinition = "int(11)", name="brojpolaznika")
-    private Integer brojPolaznika;
+    private Date datumpocetka;
+    @Column(nullable = false)
+    private Integer brojpolaznika;
+
     @ManyToMany
-    private List<Polaznik> polaznici = new ArrayList<>();
+    @JoinTable(name = "clan",
+            joinColumns = { @JoinColumn(name = "grupa") },
+            inverseJoinColumns = { @JoinColumn(name = "polaznik") } )
+    private List<Polaznik> polaznici;
+
+    public Grupa() {
+        this.polaznici = new ArrayList<>();
+    }
 
     public String getNaziv() {
         return naziv;
@@ -62,21 +71,23 @@ public class Grupa extends Entitet {
         this.predavac = predavac;
     }
 
-    public Date getDatumPocetka() {
-        return datumPocetka;
+    public Date getDatumpocetka() {
+        return datumpocetka;
     }
 
-    public void setDatumPocetka(Date datumPocetka) {
-        this.datumPocetka = datumPocetka;
+    public void setDatumpocetka(Date datumpocetka) {
+        this.datumpocetka = datumpocetka;
     }
 
-    public Integer getBrojPolaznika() {
-        return brojPolaznika;
+    public Integer getBrojpolaznika() {
+        return brojpolaznika;
     }
 
-    public void setBrojPolaznika(Integer brojPolaznika) {
-        this.brojPolaznika = brojPolaznika;
+    public void setBrojpolaznika(Integer brojpolaznika) {
+        this.brojpolaznika = brojpolaznika;
     }
+
+
 
     public List<Polaznik> getPolaznici() {
         return polaznici;
@@ -85,8 +96,5 @@ public class Grupa extends Entitet {
     public void setPolaznici(List<Polaznik> polaznici) {
         this.polaznici = polaznici;
     }
-    
-    
-    
-    
+
 }

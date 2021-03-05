@@ -8,22 +8,24 @@ package edunova.jp23ver2.model;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author srdja
  */
 @Entity
+@Table(name = "smjer")
 public class Smjer extends Entitet {
     
-    @Column(columnDefinition = "varchar(50)", name="naziv")
+    @Column(columnDefinition = "varchar(50)",nullable = false)
     private String naziv;
-    @Column(columnDefinition = "decimal(18,2)", name="cijena")
+    @Column(columnDefinition = "decimal(18,2)")
     private BigDecimal cijena;
-    @Column(columnDefinition = "int(11)", name="trajanje")
     private Integer trajanje;
-    @Column(columnDefinition = "tinyint(1)", name="verificiran")
+    @Column(columnDefinition = "tinyint(1)")
     private Boolean verificiran;
+
 
     public String getNaziv() {
         return naziv;
@@ -56,6 +58,4 @@ public class Smjer extends Entitet {
     public void setVerificiran(Boolean verificiran) {
         this.verificiran = verificiran;
     }
-    
-    
 }
