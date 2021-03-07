@@ -5,6 +5,9 @@
  */
 package edunova.zavrsnirad;
 
+import edunova.zavrsnirad.controller.ObradaVlasnik;
+import edunova.zavrsnirad.model.Vlasnik;
+import edunova.zavrsnirad.util.EdunovaException;
 import edunova.zavrsnirad.util.HibernateUtil;
 import org.hibernate.Session;
 
@@ -16,14 +19,26 @@ public class Start {
     
     public static void main(String[] args) {
         
-         Session s = HibernateUtil.getSession();
+        Vlasnik v = new Vlasnik();
+        v.setIme("Srđan");
+        v.setPrezime("Filipović");
+        v.setSpol("muško");
+        v.setOib("75919144249");
         
+        ObradaVlasnik ov = new ObradaVlasnik();
+        ov.setEntitet(v);
         
-        System.out.println(s.getMetamodel().getEntities().size());
+        try {
+    
+              ov.create();
+        } catch (EdunovaException ex) {
+            System.out.println(ex.getPoruka());
+        }
         
-        s.beginTransaction();
-        
-        s.getTransaction().commit();
+//        Session s = HibernateUtil.getSession();
+//        System.out.println(s.getMetamodel().getEntities().size());
+//        s.beginTransaction();
+//        s.getTransaction().commit();
     }
     
 }
