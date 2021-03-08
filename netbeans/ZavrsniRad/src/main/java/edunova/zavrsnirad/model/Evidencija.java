@@ -5,6 +5,7 @@
  */
 package edunova.zavrsnirad.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Evidencija extends Entitet {
     private Auto auto;
     private Date datum;
     private int natocenoLitara;
-    private int ukupnaCijena;
+    private BigDecimal ukupnaCijena;
     private int pocetnoStanje;
     private int zavrsnoStanje;
     @OneToOne
@@ -58,14 +59,14 @@ public class Evidencija extends Entitet {
         this.natocenoLitara = natocenoLitara;
     }
 
-    public int getUkupnaCijena() {
+    public BigDecimal getUkupnaCijena() {
         return ukupnaCijena;
     }
 
-    public void setUkupnaCijena(int ukupnaCijena) {
+    public void setUkupnaCijena(BigDecimal ukupnaCijena) {
         this.ukupnaCijena = ukupnaCijena;
     }
-
+   
     public int getPocetnoStanje() {
         return pocetnoStanje;
     }
