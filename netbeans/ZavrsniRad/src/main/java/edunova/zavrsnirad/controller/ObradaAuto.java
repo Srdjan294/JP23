@@ -30,7 +30,7 @@ public class ObradaAuto extends Obrada<Auto> {
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        
+        kontrolaCreate();
     }
 
     @Override
