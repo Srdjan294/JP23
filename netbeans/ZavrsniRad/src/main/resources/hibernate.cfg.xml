@@ -47,6 +47,7 @@
         <mapping class="edunova.zavrsnirad.model.Auto" />
         <mapping class="edunova.zavrsnirad.model.Evidencija" />
         <mapping class="edunova.zavrsnirad.model.Oznaka" /> 
+        <mapping class="edunova.zavrsnirad.model.Operater" /> 
         
     </session-factory>
 </hibernate-configuration>
