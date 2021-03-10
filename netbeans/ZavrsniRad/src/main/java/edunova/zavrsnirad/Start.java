@@ -22,7 +22,7 @@ public class Start {
     
     public static void main(String[] args) {
         
-        //new Autorizacija().setVisible(true);
+        new Autorizacija().setVisible(true);
         
 //        Vlasnik v = new Vlasnik();
 //        v.setIme("Srđan");
@@ -59,10 +59,10 @@ public class Start {
           
           
           
-        Session s = HibernateUtil.getSession();
-        System.out.println(s.getMetamodel().getEntities().size());
-        s.beginTransaction();
-        s.getTransaction().commit();
+//        Session s = HibernateUtil.getSession();
+//        System.out.println(s.getMetamodel().getEntities().size());
+//        s.beginTransaction();
+//        s.getTransaction().commit();
     }
     
 }
