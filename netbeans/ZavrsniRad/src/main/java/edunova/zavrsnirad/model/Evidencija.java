@@ -8,6 +8,7 @@ package edunova.zavrsnirad.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -29,11 +30,8 @@ public class Evidencija extends Entitet {
     private BigDecimal ukupnaCijena;
     private int pocetnoStanje;
     private int zavrsnoStanje;
-    @OneToOne
-    @JoinTable(name = "evidencija_oznaka",
-            joinColumns = { @JoinColumn(name = "evidencija") },
-            inverseJoinColumns = { @JoinColumn(name = "oznaka") } )
-    private Oznaka oznaka;
+    @ManyToMany 
+    private List<Oznaka> oznaka = new ArrayList<>();
 
     public Auto getAuto() {
         return auto;
@@ -83,13 +81,15 @@ public class Evidencija extends Entitet {
         this.zavrsnoStanje = zavrsnoStanje;
     }
 
-    public Oznaka getOznaka() {
+    public List<Oznaka> getOznaka() {
         return oznaka;
     }
 
-    public void setOznaka(Oznaka oznaka) {
+    public void setOznaka(List<Oznaka> oznaka) {
         this.oznaka = oznaka;
     }
+
+ 
     
     
 
