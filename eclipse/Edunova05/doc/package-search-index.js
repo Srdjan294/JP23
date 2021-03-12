@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"edunova05","l":"edunova"},{"m":"edunova05","l":"edunova.zadaci"},{"m":"edunova05","l":"view"}]
