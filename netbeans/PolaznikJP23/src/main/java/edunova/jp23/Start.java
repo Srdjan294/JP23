@@ -6,6 +6,7 @@
 package edunova.jp23;
 
 import edunova.jp23.view.Autorizacija;
+import edunova.jp23.view.SplashScreen;
 
 
 
@@ -19,7 +20,7 @@ public class Start {
     
     public static void main(String[] args) {
         
-       new Autorizacija().setVisible(true);
+       new SplashScreen().setVisible(true);
     }
     
 }

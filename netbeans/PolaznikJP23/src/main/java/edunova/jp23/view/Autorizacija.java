@@ -24,8 +24,8 @@ public class Autorizacija extends javax.swing.JFrame {
      */
     public Autorizacija() {
         initComponents();
-        
-        txtEmail.setText("tjakopec@gmail.com");
+        setTitle(Aplikacija.NASLOV_APP);
+        txtEmail.setText("srdjanfilipovic991@gmail.com");
         pswLozinka.setText("edunova");
     }
 
@@ -45,7 +45,7 @@ public class Autorizacija extends javax.swing.JFrame {
         pswLozinka = new javax.swing.JPasswordField();
         btnPrijava = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edunova");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autorizacija.png"))); // NOI18N
@@ -88,11 +88,10 @@ public class Autorizacija extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pswLozinka, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtEmail)
-                        .addComponent(btnPrijava, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtEmail)
+                    .addComponent(btnPrijava, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -180,7 +179,10 @@ public class Autorizacija extends javax.swing.JFrame {
             obradiGresku(pswLozinka,"Email i lozinka ne odgovaraju");
             return;
         }
-        System.out.println("autoriziran sam i mogu ići dalje");
+        o.setLozinka(null);
+        Aplikacija.operater = o;
+        new Izbornik().setVisible(true);
+        dispose();
     }
     
     private void obradiGresku(JComponent komponenta, String poruka){
