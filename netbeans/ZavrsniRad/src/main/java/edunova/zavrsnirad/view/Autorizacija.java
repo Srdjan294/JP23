@@ -80,9 +80,9 @@ public class Autorizacija extends javax.swing.JFrame {
 
         btnPrijava.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnPrijava.setText("Prijava");
-        btnPrijava.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                btnPrijavaKeyReleased(evt);
+        btnPrijava.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrijavaActionPerformed(evt);
             }
         });
 
@@ -151,9 +151,9 @@ public class Autorizacija extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pswLozinkaKeyReleased
 
-    private void btnPrijavaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPrijavaKeyReleased
+    private void btnPrijavaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrijavaActionPerformed
         prijaviSe();
-    }//GEN-LAST:event_btnPrijavaKeyReleased
+    }//GEN-LAST:event_btnPrijavaActionPerformed
 
     
 

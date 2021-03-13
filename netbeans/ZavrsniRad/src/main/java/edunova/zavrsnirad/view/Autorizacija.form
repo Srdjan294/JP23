@@ -150,7 +150,7 @@
         <Property name="text" type="java.lang.String" value="Prijava"/>
       </Properties>
       <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnPrijavaKeyReleased"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrijavaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
