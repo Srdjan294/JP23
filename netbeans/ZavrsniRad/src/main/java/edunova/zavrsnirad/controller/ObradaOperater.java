@@ -8,12 +8,25 @@ package edunova.zavrsnirad.controller;
 import edunova.zavrsnirad.model.Operater;
 import edunova.zavrsnirad.util.EdunovaException;
 import java.util.List;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
  * @author srdja
  */
 public class ObradaOperater extends Obrada<Operater> {
+    
+    public Operater autoriziraj(String email, char[] lozinka){
+        
+        Operater oper = (Operater)session
+                        .createQuery("from Operater o where o.email=:email")
+                        .setParameter("email", email)
+                        .getSingleResult();
+        if(oper == null){
+            return null;
+        }
+        return BCrypt.checkpw(new String(lozinka),oper.getLozinka()) ? oper : null;
+    }
 
     @Override
     public List<Operater> getPodaci() {

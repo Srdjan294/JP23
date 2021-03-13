@@ -5,6 +5,14 @@
  */
 package edunova.zavrsnirad.view;
 
+import edunova.zavrsnirad.controller.ObradaOperater;
+import edunova.zavrsnirad.model.Operater;
+import java.awt.event.KeyEvent;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author srdja
@@ -16,6 +24,9 @@ public class Autorizacija extends javax.swing.JFrame {
      */
     public Autorizacija() {
         initComponents();
+        setTitle(Aplikacija.NASLOV_APP);
+        txtEmail.setText("srdjanfilipovic991@gmail.com");
+        pswLozinka.setText("edunova");
     }
 
     /**
@@ -31,14 +42,14 @@ public class Autorizacija extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        pswLozinka = new javax.swing.JPasswordField();
+        btnPrijava = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AutoEvidencija");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autorizacija.png"))); // NOI18N
@@ -50,15 +61,30 @@ public class Autorizacija extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Email:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Lozinka:");
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        pswLozinka.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        pswLozinka.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pswLozinkaKeyReleased(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setText("Prijava");
+        btnPrijava.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnPrijava.setText("Prijava");
+        btnPrijava.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                btnPrijavaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,9 +110,9 @@ public class Autorizacija extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(txtEmail)
+                            .addComponent(pswLozinka, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPrijava, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,13 +125,13 @@ public class Autorizacija extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pswLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPrijava, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
 
@@ -113,16 +139,77 @@ public class Autorizacija extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            prijaviSe();
+        }
+    }//GEN-LAST:event_txtEmailKeyReleased
+
+    private void pswLozinkaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pswLozinkaKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            prijaviSe();
+        }
+    }//GEN-LAST:event_pswLozinkaKeyReleased
+
+    private void btnPrijavaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPrijavaKeyReleased
+        prijaviSe();
+    }//GEN-LAST:event_btnPrijavaKeyReleased
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPrijava;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField pswLozinka;
+    private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables
+
+    private void prijaviSe() {
+        
+        if(txtEmail.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(rootPane, "Obavezno email");
+//            txtEmail.requestFocus();
+              obradiGresku(txtEmail, "Obavezno email");
+              return;
+        }
+        
+        try {
+            InternetAddress email = new InternetAddress(txtEmail.getText());
+            email.validate();
+        } catch (AddressException e) {
+              obradiGresku(txtEmail, "Email nije ispravan");
+//            JOptionPane.showMessageDialog(rootPane, "Email nije ispravan");
+//            txtEmail.requestFocus();
+              return;
+        }
+        
+        if(pswLozinka.getPassword().length == 0){
+//            JOptionPane.showMessageDialog(rootPane, "Obavezno lozinka");
+//            pswLozinka.requestFocus();
+              obradiGresku(pswLozinka, "Obavezno lozinka");
+              return;
+        }
+        
+        ObradaOperater oo = new ObradaOperater();
+        Operater o = oo.autoriziraj(txtEmail.getText(), pswLozinka.getPassword());
+        
+        if(o == null){
+            obradiGresku(pswLozinka, "Email i lozinka ne odgovaraju");
+            return;
+        }
+        o.setLozinka(null);
+        Aplikacija.operater = o;
+        new Izbornik().setVisible(true);
+        dispose();
+        
+    }
+    
+    private void obradiGresku(JComponent komponenta, String poruka){
+        komponenta.requestFocus();
+        JOptionPane.showMessageDialog(rootPane, poruka);
+    }
 }
