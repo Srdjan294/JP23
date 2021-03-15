@@ -5,6 +5,9 @@
  */
 package edunova.zavrsnirad.view;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author srdja
@@ -16,6 +19,27 @@ public class Izbornik extends javax.swing.JFrame {
      */
     public Izbornik() {
         initComponents();
+        setTitle(Aplikacija.NASLOV_APP + " " + 
+                Aplikacija.operater.getImePrezime());
+        new Vrijeme().start();
+    }
+    
+    private class Vrijeme extends Thread{
+        
+        private SimpleDateFormat df = new SimpleDateFormat("dd. MM. YYYY. HH:mm:ss");
+
+        @Override
+        public void run() {
+            while(true){
+                lblVrijeme.setText(df.format(new Date()));
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                }
+            }
+        }
+        
+        
     }
 
     /**
@@ -27,27 +51,27 @@ public class Izbornik extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        lblVrijeme = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ovdje ide izbornik");
+        jToolBar1.setRollover(true);
+
+        lblVrijeme.setText("vrijeme");
+        jToolBar1.add(lblVrijeme);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 427, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -57,6 +81,7 @@ public class Izbornik extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblVrijeme;
     // End of variables declaration//GEN-END:variables
 }

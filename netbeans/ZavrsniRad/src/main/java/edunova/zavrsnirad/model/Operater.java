@@ -51,6 +51,8 @@ public class Operater extends Entitet {
         this.lozinka = lozinka;
     }
     
-    
+    public String getImePrezime(){
+        return getIme() + " " + getPrezime();
+    }
     
 }
