@@ -7,6 +7,7 @@ package edunova.zavrsnirad.view;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,6 +54,28 @@ public class Izbornik extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         lblVrijeme = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmVlasnici = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jmAuti = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jmEvidencije = new javax.swing.JMenu();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jmOznake = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jmOnama = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +83,80 @@ public class Izbornik extends javax.swing.JFrame {
 
         lblVrijeme.setText("vrijeme");
         jToolBar1.add(lblVrijeme);
+
+        jmVlasnici.setText("Vlasnici");
+
+        jMenuItem1.setText("Novi vlasnik");
+        jmVlasnici.add(jMenuItem1);
+
+        jMenuItem2.setText("Pregledaj vlasnike");
+        jmVlasnici.add(jMenuItem2);
+
+        jMenuItem3.setText("Uredi vlasnika");
+        jmVlasnici.add(jMenuItem3);
+
+        jMenuItem4.setText("Obriši vlasnika");
+        jmVlasnici.add(jMenuItem4);
+
+        jMenuBar1.add(jmVlasnici);
+
+        jmAuti.setText("Auti");
+
+        jMenuItem5.setText("Novi auto");
+        jmAuti.add(jMenuItem5);
+
+        jMenuItem6.setText("Pregledaj aute");
+        jmAuti.add(jMenuItem6);
+
+        jMenuItem7.setText("Uredi auto");
+        jmAuti.add(jMenuItem7);
+
+        jMenuItem8.setText("Obriši auto");
+        jmAuti.add(jMenuItem8);
+
+        jMenuBar1.add(jmAuti);
+
+        jmEvidencije.setText("Evidencije");
+
+        jMenuItem9.setText("Nova evidencija");
+        jmEvidencije.add(jMenuItem9);
+
+        jMenuItem10.setText("Pregledaj evidencije");
+        jmEvidencije.add(jMenuItem10);
+
+        jMenuItem11.setText("Uredi evidenciju");
+        jmEvidencije.add(jMenuItem11);
+
+        jMenuItem12.setText("Obriši evidenciju");
+        jmEvidencije.add(jMenuItem12);
+
+        jMenuBar1.add(jmEvidencije);
+
+        jmOznake.setText("Oznake");
+
+        jMenuItem13.setText("Nova oznaka");
+        jmOznake.add(jMenuItem13);
+
+        jMenuItem14.setText("Pregledaj oznake");
+        jmOznake.add(jMenuItem14);
+
+        jMenuItem15.setText("Uredi oznaku");
+        jmOznake.add(jMenuItem15);
+
+        jMenuItem16.setText("Obriši oznaku");
+        jmOznake.add(jMenuItem16);
+
+        jMenuBar1.add(jmOznake);
+
+        jmOnama.setText("O nama");
+        jmOnama.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmOnamaMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jmOnama);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +167,7 @@ public class Izbornik extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 427, Short.MAX_VALUE)
+                .addGap(0, 405, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -78,10 +175,38 @@ public class Izbornik extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmOnamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmOnamaMouseClicked
+       Date d = new Date();
+       SimpleDateFormat df = new SimpleDateFormat("YYYY");
+       JOptionPane.showMessageDialog(rootPane, "© " + Aplikacija.NASLOV_APP + " 2020 - " + df.format(d));
+    }//GEN-LAST:event_jmOnamaMouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JMenu jmAuti;
+    private javax.swing.JMenu jmEvidencije;
+    private javax.swing.JMenu jmOnama;
+    private javax.swing.JMenu jmOznake;
+    private javax.swing.JMenu jmVlasnici;
     private javax.swing.JLabel lblVrijeme;
     // End of variables declaration//GEN-END:variables
 }
