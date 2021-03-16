@@ -75,6 +75,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmProgrami.setText("Programi");
 
         jMenuItem1.setText("Smjerovi");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jmProgrami.add(jMenuItem1);
 
         jMenuItem2.setText("Polaznici");
@@ -123,6 +128,10 @@ public class Izbornik extends javax.swing.JFrame {
         SimpleDateFormat df = new SimpleDateFormat("YYYY"); 
         JOptionPane.showMessageDialog(rootPane, "© " + Aplikacija.NASLOV_APP + " 2020 - " + df.format(d));
     }//GEN-LAST:event_jmOnamaMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new SmjerForma().setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     
 

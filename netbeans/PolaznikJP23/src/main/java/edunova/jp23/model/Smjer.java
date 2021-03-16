@@ -57,6 +57,14 @@ public class Smjer extends Entitet {
     public void setVerificiran(Boolean verificiran) {
         this.verificiran = verificiran;
     }
+
+    @Override
+    public String toString() {
+        if(getNaziv() == null || getNaziv().trim().isEmpty()){
+            return "[Naziv nije definiran]";
+        }
+        return getNaziv();
+    }
     
     
 }
