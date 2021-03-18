@@ -179,6 +179,10 @@ public class Autorizacija extends javax.swing.JFrame {
             obradiGresku(pswLozinka,"Email i lozinka ne odgovaraju");
             return;
         }
+        
+        // imamo problem promjene objekta pod ingerencijom Hibernatea
+        // jer automatski sprema u bazu - it will be saved automaticaly
+        // https://stackoverflow.com/questions/30955910/if-i-modify-a-hibernate-entity-after-doing-a-save-when-i-commit-would-the-chan
         //o.setLozinka(null);
         Aplikacija.operater = o;
         new Izbornik().setVisible(true);

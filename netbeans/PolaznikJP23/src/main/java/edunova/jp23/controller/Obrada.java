@@ -5,6 +5,7 @@
  */
 package edunova.jp23.controller;
 
+import edunova.jp23.model.Entitet;
 import edunova.jp23.util.EdunovaException;
 import edunova.jp23.util.HibernateUtil;
 import java.util.List;
