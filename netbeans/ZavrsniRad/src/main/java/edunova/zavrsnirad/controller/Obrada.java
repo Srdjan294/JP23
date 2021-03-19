@@ -52,7 +52,7 @@ public abstract class Obrada<T> {
         kontrola();
         kontrolaUpdate();
         save();
-       return this.entitet;
+        return this.entitet;
     }
     
     public boolean delete() throws EdunovaException{

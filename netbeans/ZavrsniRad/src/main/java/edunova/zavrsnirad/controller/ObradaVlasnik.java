@@ -32,7 +32,6 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
         kontrolaCreate();
-        
     }
 
     @Override
@@ -65,14 +64,14 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     }
 
     private void kontrolaPrezimePostavljen() throws EdunovaException {
-        if(entitet.getIme() == null || entitet.getIme().isEmpty()){
-            throw new EdunovaException("Ime mora biti postavljeno");
+        if(entitet.getPrezime() == null || entitet.getPrezime().isEmpty()){
+            throw new EdunovaException("Prezime mora biti postavljeno");
         }
     }
 
     private void kontrolaPrezimeDuzina() throws EdunovaException {
-        if(entitet.getIme().length() > 25){
-            throw new EdunovaException("Ime predugačko");
+        if(entitet.getPrezime().length() > 25){
+            throw new EdunovaException("Prezime predugačko");
         }
     }
     
@@ -119,4 +118,5 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
         return kontrolni == Integer.parseInt(oib.substring(10));
 
     }
+    
 }
