@@ -277,7 +277,7 @@ public class Izbornik extends javax.swing.JFrame {
 
         jLabel15.setText("Datum rođenja:");
 
-        jLabel16.setText("Broj Mobitela:");
+        jLabel16.setText("Broj mobitela:");
 
         jLabel17.setText("Email:");
 
