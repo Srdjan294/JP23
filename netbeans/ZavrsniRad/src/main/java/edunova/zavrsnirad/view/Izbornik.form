@@ -146,7 +146,7 @@
                           <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel7" min="-2" pref="107" max="-2" attributes="0"/>
                           <Component id="jTextField6" alignment="0" pref="229" max="32767" attributes="0"/>
-                          <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="datePicker1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="192" max="32767" attributes="0"/>
                   </Group>
@@ -161,7 +161,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                              <Component id="datePicker1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -214,8 +214,6 @@
                 <Property name="text" type="java.lang.String" value="Datum:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Auto:"/>
@@ -250,6 +248,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField6">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePicker1">
             </Component>
           </SubComponents>
         </Container>
@@ -398,7 +398,6 @@
                           <Component id="jLabel14" min="-2" pref="87" max="-2" attributes="0"/>
                           <Component id="jTextField14" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel15" min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="jTextField15" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
                           <Component id="jTextField16" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel17" min="-2" pref="95" max="-2" attributes="0"/>
@@ -406,6 +405,7 @@
                           <Component id="jLabel18" min="-2" pref="84" max="-2" attributes="0"/>
                           <Component id="jTextField18" alignment="0" pref="229" max="32767" attributes="0"/>
                           <Component id="jTextField12" alignment="0" max="32767" attributes="0"/>
+                          <Component id="datePicker2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
@@ -432,8 +432,8 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField15" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="datePicker2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jTextField16" min="-2" max="-2" attributes="0"/>
@@ -498,8 +498,6 @@
                 <Property name="text" type="java.lang.String" value="Datum ro&#x111;enja:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField15">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Broj Mobitela:"/>
@@ -520,6 +518,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField18">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePicker2">
             </Component>
           </SubComponents>
         </Container>
