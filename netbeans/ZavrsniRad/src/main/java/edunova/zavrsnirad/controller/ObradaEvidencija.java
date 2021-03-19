@@ -41,7 +41,7 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
 
     //kontrola Natočeno litara
     private void kontrolaNatocenoLitara() throws EdunovaException {
-        if(entitet.getNatocenoLitara() <= 0){
+        if(entitet.getNatocenoLitara() == null || entitet.getNatocenoLitara().compareTo(BigDecimal.ZERO) <= 0){
             throw new EdunovaException("Natočeno litara ne smije biti nula ili negativno");
         }
     }

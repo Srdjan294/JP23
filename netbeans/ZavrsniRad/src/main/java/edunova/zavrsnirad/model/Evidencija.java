@@ -26,7 +26,7 @@ public class Evidencija extends Entitet {
     @ManyToOne
     private Auto auto;
     private Date datum;
-    private int natocenoLitara;
+    private BigDecimal natocenoLitara;
     private BigDecimal ukupnaCijena;
     private int pocetnoStanje;
     private int zavrsnoStanje;
@@ -49,11 +49,11 @@ public class Evidencija extends Entitet {
         this.datum = datum;
     }
 
-    public int getNatocenoLitara() {
+    public BigDecimal getNatocenoLitara() {
         return natocenoLitara;
     }
 
-    public void setNatocenoLitara(int natocenoLitara) {
+    public void setNatocenoLitara(BigDecimal natocenoLitara) {
         this.natocenoLitara = natocenoLitara;
     }
 
