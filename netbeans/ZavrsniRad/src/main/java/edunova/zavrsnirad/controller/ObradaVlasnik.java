@@ -78,7 +78,7 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     
     //kontrola Spol
     private void kontrolaSpol() throws EdunovaException {
-        if(entitet.getSpol() != "muško" && entitet.getSpol() != "žensko"){
+        if(!"muško".equals(entitet.getSpol()) && !"žensko".equals(entitet.getSpol())){
             throw new EdunovaException("Spol mora biti muško ili žensko");
         }
     }
