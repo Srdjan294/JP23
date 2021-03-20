@@ -201,7 +201,7 @@ public class Autorizacija extends javax.swing.JFrame {
             obradiGresku(pswLozinka, "Email i lozinka ne odgovaraju");
             return;
         }
-        o.setLozinka(null);
+        //o.setLozinka(null);
         Aplikacija.operater = o;
         new Izbornik().setVisible(true);
         dispose();

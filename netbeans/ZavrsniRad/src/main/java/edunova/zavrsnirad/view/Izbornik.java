@@ -527,7 +527,7 @@ public class Izbornik extends javax.swing.JFrame {
         txtIme.setText(obradaVlasnik.getEntitet().getIme());
         txtPrezime.setText(obradaVlasnik.getEntitet().getPrezime());
         txtOib.setText(obradaVlasnik.getEntitet().getOib());
-        //dpDatumRodenja.setText(obradaVlasnik.getEntitet().getDatumRodenja());
+        dpDatumRodenja.setDate(obradaVlasnik.getEntitet().getDatumRodenja());
         txtBrojMob.setText(obradaVlasnik.getEntitet().getBrojMobitela());
         txtEmail.setText(obradaVlasnik.getEntitet().getEmail());
         txtSpol.setText(obradaVlasnik.getEntitet().getSpol());
@@ -537,6 +537,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void btnDodajVlasnikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajVlasnikaActionPerformed
         
         if(obradaVlasnik.getEntitet() == null){
+            obradaVlasnik.setEntitet(new Vlasnik());
+        }
+        
+        if(lstVlasnici.getSelectedValue() != null){
             obradaVlasnik.setEntitet(new Vlasnik());
         }
         
@@ -559,7 +563,7 @@ public class Izbornik extends javax.swing.JFrame {
         entitet.setIme(txtIme.getText());
         entitet.setPrezime(txtPrezime.getText());
         entitet.setOib(txtOib.getText());
-        //entitet.setDatumRodenja(dpDatumRodenja.getDate());
+        entitet.setDatumRodenja(dpDatumRodenja.getDate());
         entitet.setBrojMobitela(txtBrojMob.getText());
         entitet.setEmail(txtEmail.getText());
         entitet.setSpol(txtSpol.getText());

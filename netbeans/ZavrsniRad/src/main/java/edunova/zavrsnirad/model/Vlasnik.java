@@ -5,6 +5,7 @@
  */
 package edunova.zavrsnirad.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Entity;
 
@@ -20,7 +21,7 @@ public class Vlasnik extends Entitet {
     private String oib;
     private String brojMobitela;
     private String email;
-    private Date datumRodenja;
+    private LocalDate datumRodenja;
     private String spol;
 
     public String getIme() {
@@ -63,11 +64,11 @@ public class Vlasnik extends Entitet {
         this.email = email;
     }
 
-    public Date getDatumRodenja() {
+    public LocalDate getDatumRodenja() {
         return datumRodenja;
     }
 
-    public void setDatumRodenja(Date datumRodenja) {
+    public void setDatumRodenja(LocalDate datumRodenja) {
         this.datumRodenja = datumRodenja;
     }
 
