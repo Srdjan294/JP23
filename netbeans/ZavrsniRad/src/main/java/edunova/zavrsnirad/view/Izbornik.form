@@ -394,20 +394,22 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel12" min="-2" pref="94" max="-2" attributes="0"/>
                           <Component id="jLabel13" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="jTextField13" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPrezime" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel14" min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="jTextField14" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtOib" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel15" min="-2" pref="101" max="-2" attributes="0"/>
                           <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
-                          <Component id="jTextField16" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtBrojMob" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel17" min="-2" pref="95" max="-2" attributes="0"/>
-                          <Component id="jTextField17" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel18" min="-2" pref="84" max="-2" attributes="0"/>
-                          <Component id="jTextField18" alignment="0" pref="229" max="32767" attributes="0"/>
-                          <Component id="jTextField12" alignment="0" max="32767" attributes="0"/>
-                          <Component id="datePicker2" max="32767" attributes="0"/>
+                          <Component id="txtSpol" alignment="0" pref="229" max="32767" attributes="0"/>
+                          <Component id="txtIme" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dpDatumRodenja" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <Component id="btnDodajVlasnika" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -420,31 +422,36 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtIme" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnDodajVlasnika" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField13" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPrezime" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField14" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtOib" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="datePicker2" min="-2" max="-2" attributes="0"/>
+                              <Component id="dpDatumRodenja" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField16" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtBrojMob" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField17" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField18" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSpol" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="36" max="32767" attributes="0"/>
@@ -466,6 +473,9 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="lstVlasniciValueChanged"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Vlasnik&gt;"/>
                   </AuxValues>
@@ -477,21 +487,21 @@
                 <Property name="text" type="java.lang.String" value="Ime:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField12">
+            <Component class="javax.swing.JTextField" name="txtIme">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Prezime:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField13">
+            <Component class="javax.swing.JTextField" name="txtPrezime">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
                 <Property name="text" type="java.lang.String" value="OIB:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField14">
+            <Component class="javax.swing.JTextField" name="txtOib">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
@@ -503,23 +513,31 @@
                 <Property name="text" type="java.lang.String" value="Broj mobitela:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField16">
+            <Component class="javax.swing.JTextField" name="txtBrojMob">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Email:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField17">
+            <Component class="javax.swing.JTextField" name="txtEmail">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spol:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField18">
+            <Component class="javax.swing.JTextField" name="txtSpol">
             </Component>
-            <Component class="com.github.lgooddatepicker.components.DatePicker" name="datePicker2">
+            <Component class="com.github.lgooddatepicker.components.DatePicker" name="dpDatumRodenja">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnDodajVlasnika">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Dodaj vlasnika"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajVlasnikaActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

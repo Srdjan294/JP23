@@ -5,12 +5,16 @@
  */
 package edunova.zavrsnirad.view;
 
+import com.github.lgooddatepicker.components.DatePicker;
+import edunova.zavrsnirad.controller.ObradaVlasnik;
 import edunova.zavrsnirad.model.Auto;
 import edunova.zavrsnirad.model.Evidencija;
 import edunova.zavrsnirad.model.Oznaka;
 import edunova.zavrsnirad.model.Vlasnik;
+import edunova.zavrsnirad.util.EdunovaException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,7 +27,8 @@ import javax.swing.WindowConstants;
  */
 public class Izbornik extends javax.swing.JFrame {
     
-    
+    private ObradaVlasnik obradaVlasnik;
+    DatePicker datePicker = new DatePicker();
 
     /**
      * Creates new form Izbornik
@@ -33,6 +38,17 @@ public class Izbornik extends javax.swing.JFrame {
         setTitle(Aplikacija.NASLOV_APP + " " + 
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
+        
+        obradaVlasnik = new ObradaVlasnik();
+        ucitajVlasnike();
+    }
+
+    private void ucitajVlasnike() {
+        
+        DefaultListModel<Vlasnik> m = new DefaultListModel<>();
+        m.addAll(obradaVlasnik.getPodaci());
+        lstVlasnici.setModel(m);
+        
     }
 
     private class Vrijeme extends Thread{
@@ -97,19 +113,20 @@ public class Izbornik extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         lstVlasnici = new javax.swing.JList<>();
         jLabel12 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txtIme = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        txtPrezime = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        txtOib = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        txtBrojMob = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
-        datePicker2 = new com.github.lgooddatepicker.components.DatePicker();
+        txtSpol = new javax.swing.JTextField();
+        dpDatumRodenja = new com.github.lgooddatepicker.components.DatePicker();
+        btnDodajVlasnika = new javax.swing.JButton();
         jpOznake = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         lstOznake = new javax.swing.JList<>();
@@ -267,6 +284,11 @@ public class Izbornik extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Auti", jpAuti);
 
+        lstVlasnici.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstVlasniciValueChanged(evt);
+            }
+        });
         jScrollPane3.setViewportView(lstVlasnici);
 
         jLabel12.setText("Ime:");
@@ -283,6 +305,13 @@ public class Izbornik extends javax.swing.JFrame {
 
         jLabel18.setText("Spol:");
 
+        btnDodajVlasnika.setText("Dodaj vlasnika");
+        btnDodajVlasnika.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajVlasnikaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpVlasniciLayout = new javax.swing.GroupLayout(jpVlasnici);
         jpVlasnici.setLayout(jpVlasniciLayout);
         jpVlasniciLayout.setHorizontalGroup(
@@ -294,19 +323,21 @@ public class Izbornik extends javax.swing.JFrame {
                 .addGroup(jpVlasniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13)
+                    .addComponent(txtPrezime)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField14)
+                    .addComponent(txtOib)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField16)
+                    .addComponent(txtBrojMob)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField17)
+                    .addComponent(txtEmail)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                    .addComponent(jTextField12)
-                    .addComponent(datePicker2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(192, 192, 192))
+                    .addComponent(txtSpol, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                    .addComponent(txtIme)
+                    .addComponent(dpDatumRodenja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(btnDodajVlasnika)
+                .addGap(45, 45, 45))
         );
         jpVlasniciLayout.setVerticalGroup(
             jpVlasniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,31 +348,34 @@ public class Izbornik extends javax.swing.JFrame {
                     .addGroup(jpVlasniciLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13)
+                        .addGroup(jpVlasniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jpVlasniciLayout.createSequentialGroup()
+                                .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel13))
+                            .addComponent(btnDodajVlasnika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(datePicker2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dpDatumRodenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBrojMob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtSpol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -478,11 +512,75 @@ public class Izbornik extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jmiIzlazActionPerformed
 
+    private void lstVlasniciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstVlasniciValueChanged
+        
+        if(evt.getValueIsAdjusting()){
+            return;
+        }
+        
+        obradaVlasnik.setEntitet(lstVlasnici.getSelectedValue());
+        
+        if(obradaVlasnik.getEntitet() == null){
+            return;
+        }
+        
+        txtIme.setText(obradaVlasnik.getEntitet().getIme());
+        txtPrezime.setText(obradaVlasnik.getEntitet().getPrezime());
+        txtOib.setText(obradaVlasnik.getEntitet().getOib());
+        //dpDatumRodenja.setText(obradaVlasnik.getEntitet().getDatumRodenja());
+        txtBrojMob.setText(obradaVlasnik.getEntitet().getBrojMobitela());
+        txtEmail.setText(obradaVlasnik.getEntitet().getEmail());
+        txtSpol.setText(obradaVlasnik.getEntitet().getSpol());
+        
+    }//GEN-LAST:event_lstVlasniciValueChanged
+
+    private void btnDodajVlasnikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajVlasnikaActionPerformed
+        
+        if(obradaVlasnik.getEntitet() == null){
+            obradaVlasnik.setEntitet(new Vlasnik());
+        }
+        
+        postaviVrijednostiNaEntitetVlasnik();
+        
+        try {
+            obradaVlasnik.create();
+            obradaVlasnik.setEntitet(new Vlasnik());
+            pocisti();
+            ucitajVlasnike();
+        } catch (EdunovaException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnDodajVlasnikaActionPerformed
+
+    private void postaviVrijednostiNaEntitetVlasnik() {
+        
+        var entitet = obradaVlasnik.getEntitet();
+        
+        entitet.setIme(txtIme.getText());
+        entitet.setPrezime(txtPrezime.getText());
+        entitet.setOib(txtOib.getText());
+        //entitet.setDatumRodenja(dpDatumRodenja.getDate());
+        entitet.setBrojMobitela(txtBrojMob.getText());
+        entitet.setEmail(txtEmail.getText());
+        entitet.setSpol(txtSpol.getText());
+    }
+    
+     private void pocisti() {
+        
+         txtIme.setText("");
+         txtPrezime.setText("");
+         txtOib.setText("");
+         dpDatumRodenja.setText("");
+         txtBrojMob.setText("");
+         txtEmail.setText("");
+         txtSpol.setText("");
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodajVlasnika;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
-    private com.github.lgooddatepicker.components.DatePicker datePicker2;
+    private com.github.lgooddatepicker.components.DatePicker dpDatumRodenja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -510,12 +608,6 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -542,5 +634,11 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JList<Evidencija> lstEvidencija;
     private javax.swing.JList<Oznaka> lstOznake;
     private javax.swing.JList<Vlasnik> lstVlasnici;
+    private javax.swing.JTextField txtBrojMob;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIme;
+    private javax.swing.JTextField txtOib;
+    private javax.swing.JTextField txtPrezime;
+    private javax.swing.JTextField txtSpol;
     // End of variables declaration//GEN-END:variables
 }
