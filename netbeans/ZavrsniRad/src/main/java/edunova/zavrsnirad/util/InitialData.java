@@ -29,7 +29,7 @@ public class InitialData {
         v1.setIme("John");
         v1.setPrezime("Smith");
         v1.setBrojMobitela("0981231234");
-        v1.setDatumRodenja(df.parse("12-12-1990"));
+        //v1.setDatumRodenja(df.parse("12-12-1990"));
         v1.setEmail("johnsmith@gmail.com");
         v1.setSpol("muško");
         v1.setOib("34778518124");
@@ -38,7 +38,7 @@ public class InitialData {
         v2.setIme("Ana");
         v2.setPrezime("Anić");
         v2.setBrojMobitela("0981235678");
-        v2.setDatumRodenja(df.parse("13-10-1999"));
+        //v2.setDatumRodenja(df.parse("13-10-1999"));
         v2.setEmail("anaanic@gmail.com");
         v2.setSpol("žensko");
         v2.setOib("50913258259");
@@ -47,7 +47,7 @@ public class InitialData {
         v3.setIme("Pero");
         v3.setPrezime("Perić");
         v3.setBrojMobitela("0987657654");
-        v3.setDatumRodenja(df.parse("01-05-1995"));
+        //v3.setDatumRodenja(df.parse("01-05-1995"));
         v3.setEmail("peroperic@gmail.com");
         v3.setSpol("muško");
         v3.setOib("38868120045");
