@@ -94,6 +94,8 @@
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
+        
+        <!-- LGoodDatePicker -->
         <dependency>
             <groupId>unknown.binary</groupId>
             <artifactId>LGoodDatePicker-11.2.1</artifactId>
