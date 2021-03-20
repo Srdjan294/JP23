@@ -78,12 +78,13 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     //kontrola Spol
     private void kontrolaSpol() throws EdunovaException {
         if(!"muško".equals(entitet.getSpol()) && !"žensko".equals(entitet.getSpol())){
-            throw new EdunovaException("Spol mora biti muško ili žensko");
+            throw new EdunovaException("Spol mora biti \"muško\" ili \"žensko\"");
         }
     }
 
     //kontrola OIB
     private void kontrolaOIB() throws EdunovaException {
+        kontrolaOibPostavljen();
         if(!oibValjan(entitet.getOib())){
             throw new EdunovaException("OIB nije formalno ispravan");
         }
@@ -117,6 +118,12 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
         }
         return kontrolni == Integer.parseInt(oib.substring(10));
 
+    }
+    
+    private void kontrolaOibPostavljen() throws EdunovaException {
+        if(entitet.getOib() == null || entitet.getOib().isEmpty()){
+            throw new EdunovaException("OIB mora biti postavljen");
+        }
     }
     
 }
