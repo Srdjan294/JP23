@@ -79,6 +79,18 @@ public class Vlasnik extends Entitet {
         this.spol = spol;
     }
     
+    public String getImePrezime(){
+        return getIme() + " " + getPrezime();
+    }
+
+    @Override
+    public String toString() {
+        if(getImePrezime() == null || getImePrezime().trim().isEmpty()){
+            return "[Vlasnik nije definiran]";
+        }
+        return getImePrezime();
+    }
+    
     
     
 }
