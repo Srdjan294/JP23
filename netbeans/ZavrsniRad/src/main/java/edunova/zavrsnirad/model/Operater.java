@@ -6,6 +6,8 @@
 package edunova.zavrsnirad.model;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -17,6 +19,8 @@ public class Operater extends Entitet {
     private String ime;
     private String prezime;
     private String email;
+    @NotNull(message = "Lozinka ne prazna")
+    @NotEmpty(message = "Lozinka ne prazna")
     private String lozinka;
 
     public String getIme() {
