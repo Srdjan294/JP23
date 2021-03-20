@@ -284,6 +284,7 @@ public class Izbornik extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Auti", jpAuti);
 
+        lstVlasnici.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstVlasnici.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 lstVlasniciValueChanged(evt);
