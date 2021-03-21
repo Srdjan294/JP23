@@ -86,7 +86,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jToolBar1" max="32767" attributes="0"/>
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -268,20 +268,27 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="190" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel2" min="-2" pref="56" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel9" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel10" min="-2" pref="77" max="-2" attributes="0"/>
-                          <Component id="jTextField10" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel11" min="-2" pref="119" max="-2" attributes="0"/>
-                          <Component id="jTextField11" alignment="0" pref="229" max="32767" attributes="0"/>
-                          <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextField7" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <Component id="jTextField8" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jTextField9" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="jTextField10" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jTextField11" min="-2" pref="229" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="192" max="32767" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -391,25 +398,39 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="190" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel12" min="-2" pref="94" max="-2" attributes="0"/>
-                          <Component id="jLabel13" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                          <Component id="txtPrezime" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel14" min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="txtOib" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel15" min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
-                          <Component id="txtBrojMob" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel17" min="-2" pref="95" max="-2" attributes="0"/>
-                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel18" min="-2" pref="84" max="-2" attributes="0"/>
-                          <Component id="txtSpol" alignment="0" pref="229" max="32767" attributes="0"/>
-                          <Component id="txtIme" alignment="0" max="32767" attributes="0"/>
-                          <Component id="dpDatumRodenja" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel17" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel18" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Component id="txtSpol" alignment="0" pref="229" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel13" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="jLabel14" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="txtPrezime" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="txtIme" min="-2" pref="229" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="22" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnDodajVlasnika" max="32767" attributes="0"/>
+                                  <Component id="btnPromjeniVlasnika" pref="160" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtBrojMob" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="txtOib" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="dpDatumRodenja" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
-                      <Component id="btnDodajVlasnika" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -421,26 +442,31 @@
                           <Component id="jScrollPane3" min="-2" pref="400" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="txtIme" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Component id="txtIme" min="-2" pref="19" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="btnDodajVlasnika" max="32767" attributes="0"/>
+                                  <Component id="btnDodajVlasnika" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtPrezime" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnPromjeniVlasnika" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtPrezime" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtOib" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="dpDatumRodenja" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtBrojMob" min="-2" max="-2" attributes="0"/>
@@ -454,7 +480,7 @@
                               <Component id="txtSpol" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -540,6 +566,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajVlasnikaActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnPromjeniVlasnika">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Promjeni vlasnika"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPromjeniVlasnikaActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jpOznake">
@@ -557,12 +591,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane4" min="-2" pref="190" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel19" min="-2" pref="84" max="-2" attributes="0"/>
-                          <Component id="jTextField19" min="-2" pref="229" max="-2" attributes="0"/>
+                          <Component id="jTextField19" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="200" max="32767" attributes="0"/>
+                      <EmptySpace pref="192" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
