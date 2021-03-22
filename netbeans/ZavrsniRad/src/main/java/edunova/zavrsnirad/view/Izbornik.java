@@ -219,7 +219,7 @@ public class Izbornik extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Evidencija", jpEvidencija);
+        jTabbedPane1.addTab("Evidencija", new javax.swing.ImageIcon(getClass().getResource("/icons8-file-24.png")), jpEvidencija); // NOI18N
 
         jScrollPane2.setViewportView(lstAuti);
 
@@ -287,7 +287,7 @@ public class Izbornik extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Auti", jpAuti);
+        jTabbedPane1.addTab("Auti", new javax.swing.ImageIcon(getClass().getResource("/icons8-car-24.png")), jpAuti); // NOI18N
 
         lstVlasnici.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstVlasnici.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -403,7 +403,7 @@ public class Izbornik extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        jTabbedPane1.addTab("Vlasnici", jpVlasnici);
+        jTabbedPane1.addTab("Vlasnici", new javax.swing.ImageIcon(getClass().getResource("/icons8-user-account-24.png")), jpVlasnici); // NOI18N
 
         jScrollPane4.setViewportView(lstOznake);
 
@@ -435,7 +435,7 @@ public class Izbornik extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Oznake", jpOznake);
+        jTabbedPane1.addTab("Oznake", new javax.swing.ImageIcon(getClass().getResource("/icons8-labels-24.png")), jpOznake); // NOI18N
 
         jmDatoteka.setText("Datoteka");
 
