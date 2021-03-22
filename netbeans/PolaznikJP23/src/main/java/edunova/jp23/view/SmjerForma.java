@@ -144,11 +144,13 @@ public class SmjerForma extends javax.swing.JFrame {
         if (evt.getValueIsAdjusting()) {
             return;
         }
-        obrada.setEntitet(lstSmjerovi.getSelectedValue());
-
-        if (obrada.getEntitet() == null) {
+        
+        if (lstSmjerovi.getSelectedValue() == null) {
             return;
         }
+        
+        obrada.setEntitet(lstSmjerovi.getSelectedValue());
+
         //ovo se može zamijeniti tzv. Binding
         txtNaziv.setText(obrada.getEntitet().getNaziv());
 
@@ -190,7 +192,7 @@ public class SmjerForma extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDodajActionPerformed
 
     private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
-        if (obrada.getEntitet().getId() == null) {
+        if (obrada.getEntitet() == null || obrada.getEntitet().getId() == null) {
             JOptionPane.showMessageDialog(rootPane, "Prvo odaberite stavku");
             return;
         }
