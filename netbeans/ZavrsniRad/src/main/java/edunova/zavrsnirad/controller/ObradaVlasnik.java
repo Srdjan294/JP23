@@ -27,6 +27,7 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
         kontrolaPrezime();
         kontrolaSpol();
         kontrolaOIB();
+        kontrolaDupli();
     }
 
     @Override
@@ -123,6 +124,17 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     private void kontrolaOibPostavljen() throws EdunovaException {
         if(entitet.getOib() == null || entitet.getOib().isEmpty()){
             throw new EdunovaException("OIB mora biti postavljen");
+        }
+    }
+
+    private void kontrolaDupli() throws EdunovaException {
+        List <Vlasnik> l = session
+                        .createQuery("from Vlasnik v where v.ime=:ime and v.prezime=:prezime")
+                        .setParameter("ime", entitet.getIme())
+                        .setParameter("prezime", entitet.getPrezime())
+                        .list();
+        if(l != null && l.size() > 0){
+            throw new EdunovaException("Vlasnik s istim imenom i prezimenom postoji");
         }
     }
     
