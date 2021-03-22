@@ -129,12 +129,11 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
 
     private void kontrolaDupli() throws EdunovaException {
         List <Vlasnik> l = session
-                        .createQuery("from Vlasnik v where v.ime=:ime and v.prezime=:prezime")
-                        .setParameter("ime", entitet.getIme())
-                        .setParameter("prezime", entitet.getPrezime())
+                        .createQuery("from Vlasnik v where v.oib=:oib")
+                        .setParameter("oib", entitet.getOib())
                         .list();
         if(l != null && l.size() > 0){
-            throw new EdunovaException("Vlasnik s istim imenom i prezimenom postoji");
+            throw new EdunovaException("Vlasnik s istim OIB-om postoji");
         }
     }
     
