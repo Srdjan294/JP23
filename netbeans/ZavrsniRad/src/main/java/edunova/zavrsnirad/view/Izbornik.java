@@ -581,7 +581,7 @@ public class Izbornik extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDodajVlasnikaActionPerformed
 
     private void btnPromjeniVlasnikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniVlasnikaActionPerformed
-        if(obradaVlasnik.getEntitet().getId() == null){
+        if(obradaVlasnik.getEntitet() == null || obradaVlasnik.getEntitet().getId() == null){
             JOptionPane.showMessageDialog(rootPane, "Prvo odabrite vlasnika");
             return;
         }
@@ -593,7 +593,8 @@ public class Izbornik extends javax.swing.JFrame {
             obradaVlasnik.setEntitet(new Vlasnik());
             pocistiUnoseVlasnika();
             ucitajVlasnike();
-        } catch (Exception e) {
+        } catch (EdunovaException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getPoruka());
         }
     }//GEN-LAST:event_btnPromjeniVlasnikaActionPerformed
 

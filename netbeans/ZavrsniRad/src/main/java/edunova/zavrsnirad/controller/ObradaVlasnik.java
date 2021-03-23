@@ -32,7 +32,10 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        kontrolaCreate();
+        kontrolaIme();
+        kontrolaPrezime();
+        kontrolaSpol();
+        kontrolaOIB();
     }
 
     @Override
