@@ -20,6 +20,7 @@ public class Test {
     
     public static void main(String[] args) {
         
+        /*
         Set<String> set = new HashSet<>();
         set.add("Osijek");
         set.add("Zagreb");
@@ -51,5 +52,17 @@ public class Test {
         for(String kljuc: map.keySet()){
             System.out.println(kljuc +": "+ map.get(kljuc).getNaziv());
         }
+        */
+        
+        Smjer s = new Smjer();
+        s.setId(1L);
+        s.setNaziv("Java");
+        
+        Smjer z = new Smjer();
+        z.setId(1L);
+        z.setNaziv("Java");
+        
+        System.out.println(s.hashCode());
+        System.out.println(z.hashCode());
     }
 }

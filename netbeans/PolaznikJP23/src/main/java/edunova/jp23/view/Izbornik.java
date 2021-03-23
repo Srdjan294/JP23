@@ -89,6 +89,11 @@ public class Izbornik extends javax.swing.JFrame {
         jmProgrami.add(jMenuItem3);
 
         jMenuItem4.setText("Grupe");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jmProgrami.add(jMenuItem4);
 
         jMenuItem5.setText("Izlaz");
@@ -115,7 +120,7 @@ public class Izbornik extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 253, Short.MAX_VALUE)
+                .addGap(0, 255, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -132,6 +137,10 @@ public class Izbornik extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new SmjerForma().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new GrupaForma().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     
 

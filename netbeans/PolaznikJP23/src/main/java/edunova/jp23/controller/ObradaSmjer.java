@@ -5,10 +5,12 @@
  */
 package edunova.jp23.controller;
 
+import edunova.jp23.model.Grupa;
 import edunova.jp23.model.Smjer;
 import edunova.jp23.util.EdunovaException;
 import java.math.BigDecimal;
 import java.util.List;
+import org.hibernate.CacheMode;
 
 /**
  *
@@ -26,7 +28,9 @@ public class ObradaSmjer extends Obrada<Smjer> {
 
     @Override
     public List<Smjer> getPodaci() {
-        return session.createQuery("from Smjer").list();
+        List<Smjer> lista = session.createQuery("from Smjer").list();
+        session.setCacheMode(CacheMode.IGNORE);
+        return lista;
     }
 
     @Override
@@ -42,7 +46,15 @@ public class ObradaSmjer extends Obrada<Smjer> {
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+        if(!entitet.getGrupe().isEmpty()){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Smjer ne možete obrisati jer se koristi na grupama: ");
+            for(Grupa g : entitet.getGrupe()){
+                sb.append(g.getNaziv());
+                sb.append(", ");
+            }
+            throw new EdunovaException(sb.toString());
+        }
     }
     
      private void kontrolaNaziv() throws EdunovaException{
