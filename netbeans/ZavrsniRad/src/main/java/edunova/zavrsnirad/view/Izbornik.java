@@ -35,11 +35,10 @@ public class Izbornik extends javax.swing.JFrame {
      */
     public Izbornik() {
         initComponents();
+        obradaVlasnik = new ObradaVlasnik();
         setTitle(Aplikacija.NASLOV_APP + " " + 
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
-        
-        obradaVlasnik = new ObradaVlasnik();
         ucitajVlasnike();
     }
 
@@ -542,11 +541,11 @@ public class Izbornik extends javax.swing.JFrame {
             return;
         }
         
-        obradaVlasnik.setEntitet(lstVlasnici.getSelectedValue());
-        
-        if(obradaVlasnik.getEntitet() == null){
+        if(lstVlasnici.getSelectedValue() == null){
             return;
         }
+        
+        obradaVlasnik.setEntitet(lstVlasnici.getSelectedValue());
         
         txtIme.setText(obradaVlasnik.getEntitet().getIme());
         txtPrezime.setText(obradaVlasnik.getEntitet().getPrezime());
@@ -560,9 +559,7 @@ public class Izbornik extends javax.swing.JFrame {
 
     private void btnDodajVlasnikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajVlasnikaActionPerformed
         
-        if(obradaVlasnik.getEntitet() == null){
-            obradaVlasnik.setEntitet(new Vlasnik());
-        }
+        obradaVlasnik.setEntitet(new Vlasnik());
         
         if(lstVlasnici.getSelectedValue() != null){
             obradaVlasnik.setEntitet(new Vlasnik());
@@ -572,7 +569,6 @@ public class Izbornik extends javax.swing.JFrame {
         
         try {
             obradaVlasnik.create();
-            obradaVlasnik.setEntitet(new Vlasnik());
             pocistiUnoseVlasnika();
             ucitajVlasnike();
         } catch (EdunovaException ex) {
@@ -590,7 +586,6 @@ public class Izbornik extends javax.swing.JFrame {
         
         try {
             obradaVlasnik.update();
-            obradaVlasnik.setEntitet(new Vlasnik());
             pocistiUnoseVlasnika();
             ucitajVlasnike();
         } catch (EdunovaException e) {
