@@ -59,7 +59,7 @@ public abstract class Obrada<T> {
         kontrolaDelete();
         session.beginTransaction();
         session.delete(this.entitet);
-        session.beginTransaction().commit();
+        session.getTransaction().commit();
         return true;
     }
     
