@@ -429,14 +429,20 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dpDatumRodenja" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
                                   <Component id="txtBrojMob" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Component id="txtOib" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="dpDatumRodenja" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtOib" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnObrisiVlasnika" min="-2" pref="160" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -470,9 +476,14 @@
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtOib" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtOib" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnObrisiVlasnika" min="-2" pref="40" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="dpDatumRodenja" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -581,6 +592,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPromjeniVlasnikaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnObrisiVlasnika">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Obri&#x161;i Vlasnika"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObrisiVlasnikaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

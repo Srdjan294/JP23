@@ -5,6 +5,7 @@
  */
 package edunova.zavrsnirad.controller;
 
+import edunova.zavrsnirad.model.Auto;
 import edunova.zavrsnirad.model.Vlasnik;
 import edunova.zavrsnirad.util.EdunovaException;
 import java.util.List;
@@ -40,7 +41,15 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+        if(!entitet.getAuti().isEmpty()){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Vlasnika ne možete obrisati jer posjeduje auto");
+            for(Auto a : entitet.getAuti()){
+                sb.append(a.getModel());
+                sb.append(", ");
+            }
+            throw new EdunovaException(sb.toString());
+        }
     }
 
     //kontrola Ime

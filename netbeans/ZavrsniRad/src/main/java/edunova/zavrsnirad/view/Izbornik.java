@@ -127,6 +127,7 @@ public class Izbornik extends javax.swing.JFrame {
         dpDatumRodenja = new com.github.lgooddatepicker.components.DatePicker();
         btnDodajVlasnika = new javax.swing.JButton();
         btnPromjeniVlasnika = new javax.swing.JButton();
+        btnObrisiVlasnika = new javax.swing.JButton();
         jpOznake = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         lstOznake = new javax.swing.JList<>();
@@ -324,6 +325,13 @@ public class Izbornik extends javax.swing.JFrame {
             }
         });
 
+        btnObrisiVlasnika.setText("Obriši Vlasnika");
+        btnObrisiVlasnika.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiVlasnikaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpVlasniciLayout = new javax.swing.GroupLayout(jpVlasnici);
         jpVlasnici.setLayout(jpVlasniciLayout);
         jpVlasniciLayout.setHorizontalGroup(
@@ -350,13 +358,17 @@ public class Izbornik extends javax.swing.JFrame {
                             .addComponent(btnPromjeniVlasnika, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
                     .addGroup(jpVlasniciLayout.createSequentialGroup()
                         .addGroup(jpVlasniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtBrojMob, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dpDatumRodenja, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBrojMob, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jpVlasniciLayout.createSequentialGroup()
+                        .addGroup(jpVlasniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnObrisiVlasnika, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jpVlasniciLayout.setVerticalGroup(
@@ -382,9 +394,12 @@ public class Izbornik extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel14)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15)
+                        .addGroup(jpVlasniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpVlasniciLayout.createSequentialGroup()
+                                .addComponent(txtOib, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15))
+                            .addComponent(btnObrisiVlasnika, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dpDatumRodenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -593,6 +608,23 @@ public class Izbornik extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPromjeniVlasnikaActionPerformed
 
+    private void btnObrisiVlasnikaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiVlasnikaActionPerformed
+        if(obradaVlasnik.getEntitet() == null || obradaVlasnik.getEntitet().getId() == null){
+            JOptionPane.showMessageDialog(rootPane, "Prvo odaberite vlasnika");
+            return;
+        }
+        
+       postaviVrijednostiNaEntitetVlasnik();
+       
+        try {
+            obradaVlasnik.delete();
+            pocistiUnoseVlasnika();
+            ucitajVlasnike();
+        } catch (EdunovaException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrisiVlasnikaActionPerformed
+
     private void postaviVrijednostiNaEntitetVlasnik() {
         
         var entitet = obradaVlasnik.getEntitet();
@@ -620,6 +652,7 @@ public class Izbornik extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajVlasnika;
+    private javax.swing.JButton btnObrisiVlasnika;
     private javax.swing.JButton btnPromjeniVlasnika;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker dpDatumRodenja;

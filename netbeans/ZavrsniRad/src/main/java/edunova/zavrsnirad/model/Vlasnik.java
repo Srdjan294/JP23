@@ -6,8 +6,11 @@
 package edunova.zavrsnirad.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,6 +26,17 @@ public class Vlasnik extends Entitet {
     private String email;
     private LocalDate datumRodenja;
     private String spol;
+    
+    @OneToMany(mappedBy="vlasnik")
+    private List<Auto> auti = new ArrayList<>();
+
+    public List<Auto> getAuti() {
+        return auti;
+    }
+
+    public void setAuti(List<Auto> auti) {
+        this.auti = auti;
+    }
 
     public String getIme() {
         return ime;
