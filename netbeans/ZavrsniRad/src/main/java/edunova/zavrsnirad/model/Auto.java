@@ -61,6 +61,11 @@ public class Auto extends Entitet {
     public void setVlasnik(Vlasnik vlasnik) {
         this.vlasnik = vlasnik;
     }
+
+    @Override
+    public String toString() {
+        return getModel();
+    }
     
     
 }

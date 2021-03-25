@@ -6,6 +6,7 @@
 package edunova.zavrsnirad.view;
 
 import com.github.lgooddatepicker.components.DatePicker;
+import edunova.zavrsnirad.controller.ObradaAuto;
 import edunova.zavrsnirad.controller.ObradaVlasnik;
 import edunova.zavrsnirad.model.Auto;
 import edunova.zavrsnirad.model.Evidencija;
@@ -14,6 +15,7 @@ import edunova.zavrsnirad.model.Vlasnik;
 import edunova.zavrsnirad.util.EdunovaException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,7 +30,7 @@ import javax.swing.WindowConstants;
 public class Izbornik extends javax.swing.JFrame {
     
     private ObradaVlasnik obradaVlasnik;
-    DatePicker datePicker = new DatePicker();
+    private ObradaAuto obradaAuto;
 
     /**
      * Creates new form Izbornik
@@ -36,10 +38,13 @@ public class Izbornik extends javax.swing.JFrame {
     public Izbornik() {
         initComponents();
         obradaVlasnik = new ObradaVlasnik();
+        obradaAuto = new ObradaAuto();
         setTitle(Aplikacija.NASLOV_APP + " " + 
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
         ucitajVlasnike();
+        ucitajAute();
+        ucitajVlasnikecmb();
     }
 
     private void ucitajVlasnike() {
@@ -48,6 +53,19 @@ public class Izbornik extends javax.swing.JFrame {
         m.addAll(obradaVlasnik.getPodaci());
         lstVlasnici.setModel(m);
         
+    }
+
+    private void ucitajAute() {
+        
+        DefaultListModel<Auto> m = new DefaultListModel<>();
+        m.addAll(obradaAuto.getPodaci());
+        lstAuti.setModel(m);
+    }
+
+    private void ucitajVlasnikecmb() {
+        DefaultComboBoxModel<Vlasnik> m = new DefaultComboBoxModel<>();
+        m.addAll(new ObradaVlasnik().getPodaci());
+        cmbVlasnici.setModel(m);
     }
 
     private class Vrijeme extends Thread{
@@ -99,15 +117,15 @@ public class Izbornik extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstAuti = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtModel = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtGodiste = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txtRegistracija = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtVolumen = new javax.swing.JTextField();
+        cmbVlasnici = new javax.swing.JComboBox<>();
         jpVlasnici = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstVlasnici = new javax.swing.JList<>();
@@ -221,6 +239,11 @@ public class Izbornik extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Evidencija", new javax.swing.ImageIcon(getClass().getResource("/icons8-file-24.png")), jpEvidencija); // NOI18N
 
+        lstAuti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstAutiValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstAuti);
 
         jLabel2.setText("Model:");
@@ -244,18 +267,20 @@ public class Izbornik extends javax.swing.JFrame {
                     .addGroup(jpAutiLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jpAutiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGodiste, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpAutiLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAutiLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbVlasnici, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
         jpAutiLayout.setVerticalGroup(
@@ -267,23 +292,23 @@ public class Izbornik extends javax.swing.JFrame {
                     .addGroup(jpAutiLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbVlasnici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtGodiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -625,6 +650,37 @@ public class Izbornik extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnObrisiVlasnikaActionPerformed
 
+    private void lstAutiValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAutiValueChanged
+        if(evt.getValueIsAdjusting()){
+            return;
+        }
+        
+        if(lstAuti.getSelectedValue() == null){
+            return;
+        }
+        
+        obradaAuto.setEntitet(lstAuti.getSelectedValue());
+        
+        var a = obradaAuto.getEntitet();
+        
+        txtModel.setText(a.getModel());
+        cmbVlasnici.setSelectedItem(a.getVlasnik());
+        /*DefaultComboBoxModel<Vlasnik> mv =
+                (DefaultComboBoxModel<Vlasnik>) cmbVlasnici.getModel();
+        for(int i=0; i<mv.getSize(); i++){
+            if(mv.getElementAt(i).getId().equals(a.getId())){
+                cmbVlasnici.setSelectedIndex(i);
+                break;
+            }
+        }*/
+        
+        txtGodiste.setText(String.valueOf(a.getGodiste()));
+        txtRegistracija.setText(a.getRegistracija());
+        txtVolumen.setText(String.valueOf(a.getVolumenRezervoara()));
+        
+        
+    }//GEN-LAST:event_lstAutiValueChanged
+
     private void postaviVrijednostiNaEntitetVlasnik() {
         
         var entitet = obradaVlasnik.getEntitet();
@@ -654,6 +710,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JButton btnDodajVlasnika;
     private javax.swing.JButton btnObrisiVlasnika;
     private javax.swing.JButton btnPromjeniVlasnika;
+    private javax.swing.JComboBox<Vlasnik> cmbVlasnici;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private com.github.lgooddatepicker.components.DatePicker dpDatumRodenja;
     private javax.swing.JLabel jLabel1;
@@ -681,17 +738,12 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmDatoteka;
     private javax.swing.JMenu jmOnama;
@@ -711,9 +763,13 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JList<Vlasnik> lstVlasnici;
     private javax.swing.JTextField txtBrojMob;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtGodiste;
     private javax.swing.JTextField txtIme;
+    private javax.swing.JTextField txtModel;
     private javax.swing.JTextField txtOib;
     private javax.swing.JTextField txtPrezime;
+    private javax.swing.JTextField txtRegistracija;
     private javax.swing.JTextField txtSpol;
+    private javax.swing.JTextField txtVolumen;
     // End of variables declaration//GEN-END:variables
 }
