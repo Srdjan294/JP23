@@ -5,10 +5,15 @@
  */
 package edunova.jp23.util;
 
+import com.github.javafaker.Faker;
+import edunova.jp23.controller.ObradaPolaznik;
+import edunova.jp23.model.Polaznik;
 import edunova.jp23.model.Smjer;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,7 +57,7 @@ public class Test {
         for(String kljuc: map.keySet()){
             System.out.println(kljuc +": "+ map.get(kljuc).getNaziv());
         }
-        */
+        
         
         Smjer s = new Smjer();
         s.setId(1L);
@@ -64,5 +69,27 @@ public class Test {
         
         System.out.println(s.hashCode());
         System.out.println(z.hashCode());
+        */
+        
+        Faker faker = new Faker();
+        ObradaPolaznik s = new ObradaPolaznik();
+        Polaznik p;
+        
+        for(int i=0; i<1; i++){
+            p=new Polaznik();
+            p.setIme(faker.name().firstName());
+            p.setPrezime(faker.name().lastName());
+            p.setOib(EdunovaUtil.getOIB());
+            p.setEmail(faker.internet().emailAddress());
+            System.out.println(i + ": " + p.getOib());
+            
+            s.setEntitet(p);
+            try {
+                s.create();
+            } catch (EdunovaException e) {
+                System.out.println(e.getPoruka());
+            }
+            
+        }
     }
 }
