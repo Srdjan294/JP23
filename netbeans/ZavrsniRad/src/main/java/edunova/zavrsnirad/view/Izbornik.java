@@ -6,6 +6,7 @@
 package edunova.zavrsnirad.view;
 
 import com.github.lgooddatepicker.components.DatePicker;
+import com.github.lgooddatepicker.components.DatePickerSettings;
 import edunova.zavrsnirad.controller.ObradaAuto;
 import edunova.zavrsnirad.controller.ObradaVlasnik;
 import edunova.zavrsnirad.model.Auto;
@@ -15,6 +16,7 @@ import edunova.zavrsnirad.model.Vlasnik;
 import edunova.zavrsnirad.util.EdunovaException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -42,6 +44,7 @@ public class Izbornik extends javax.swing.JFrame {
         setTitle(Aplikacija.NASLOV_APP + " " + 
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
+        prilagodiDpDatumRodenja();
         ucitajVlasnike();
         ucitajAute();
         ucitajVlasnikecmb();
@@ -66,6 +69,12 @@ public class Izbornik extends javax.swing.JFrame {
         DefaultComboBoxModel<Vlasnik> m = new DefaultComboBoxModel<>();
         m.addAll(new ObradaVlasnik().getPodaci());
         cmbVlasnici.setModel(m);
+    }
+
+    private void prilagodiDpDatumRodenja() {
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr","HR"));
+        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
+        dpDatumRodenja.setSettings(dps);
     }
 
     private class Vrijeme extends Thread{
