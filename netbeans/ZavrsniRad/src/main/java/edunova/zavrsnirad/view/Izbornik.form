@@ -723,9 +723,9 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtNazivGoriva" max="32767" attributes="0"/>
-                          <Component id="jLabel20" min="-2" pref="71" max="-2" attributes="0"/>
-                          <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCijena" alignment="0" pref="228" max="32767" attributes="0"/>
+                          <Component id="jLabel20" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                          <Component id="jLabel21" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="193" max="32767" attributes="0"/>
                   </Group>
