@@ -26,6 +26,7 @@ public class Start {
     
     public static void main(String[] args) {
         
+        /*
         Operater o = new Operater();
         o.setIme("Srđan");
         o.setPrezime("Filipović");
@@ -40,6 +41,7 @@ public class Start {
         } catch (EdunovaException e) {
             System.out.println(e.getMessage());
         }
+        */
         
         new SplashScreen().setVisible(true);
     }
