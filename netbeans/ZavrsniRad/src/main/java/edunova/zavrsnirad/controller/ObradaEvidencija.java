@@ -24,7 +24,6 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaNatocenoLitara();
-        kontrolaUkupnaCijena();
         kontrolaPocetnoStanje();
         kontrolaZavrsnoStanje();
     }
@@ -43,13 +42,6 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
     private void kontrolaNatocenoLitara() throws EdunovaException {
         if(entitet.getNatocenoLitara() == null || entitet.getNatocenoLitara().compareTo(BigDecimal.ZERO) <= 0){
             throw new EdunovaException("Natočeno litara ne smije biti nula ili negativno");
-        }
-    }
-
-    //kontrola Ukupna cijena
-    private void kontrolaUkupnaCijena() throws EdunovaException {
-        if(entitet.getUkupnaCijena() == null || entitet.getUkupnaCijena().compareTo(BigDecimal.ZERO) <= 0){
-            throw new EdunovaException("Cijena mora biti postavljena i veća od nule");
         }
     }
 
