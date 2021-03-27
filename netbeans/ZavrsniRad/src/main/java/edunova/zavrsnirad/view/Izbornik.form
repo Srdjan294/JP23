@@ -284,29 +284,36 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="190" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtModel" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="txtGodiste" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="jLabel10" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="txtRegistracija" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtModel" min="-2" pref="229" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="jLabel9" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="txtGodiste" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="txtRegistracija" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                      <Component id="jLabel11" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtVolumen" min="-2" pref="229" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cmbVlasnici" min="-2" pref="230" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtVolumen" min="-2" pref="229" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cmbVlasnici" min="-2" pref="230" max="-2" attributes="0"/>
+                              <Component id="jLabel8" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="191" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnDodajAuto" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -319,9 +326,14 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtModel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtModel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="btnDodajAuto" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmbVlasnici" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -410,6 +422,14 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Vlasnik&gt;"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JButton" name="btnDodajAuto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Dodaj auto"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDodajAutoActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jpVlasnici">
@@ -446,17 +466,17 @@
                                   <Component id="txtIme" min="-2" pref="229" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="22" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnDodajVlasnika" max="32767" attributes="0"/>
-                                  <Component id="btnPromjeniVlasnika" pref="160" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnPromjeniVlasnika" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="btnDodajVlasnika" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="dpDatumRodenja" min="-2" pref="229" max="-2" attributes="0"/>
                                   <Component id="jLabel16" min="-2" pref="108" max="-2" attributes="0"/>
                                   <Component id="txtBrojMob" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="dpDatumRodenja" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -490,16 +510,16 @@
                                   </Group>
                                   <Component id="btnDodajVlasnika" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnPromjeniVlasnika" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="txtPrezime" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="btnPromjeniVlasnika" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="txtOib" min="-2" max="-2" attributes="0"/>
