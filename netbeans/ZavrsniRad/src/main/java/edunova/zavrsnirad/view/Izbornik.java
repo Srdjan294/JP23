@@ -71,7 +71,7 @@ public class Izbornik extends javax.swing.JFrame {
         
         Vlasnik v = new Vlasnik();
         v.setId(-1L);
-        v.setIme("Odaberite vlasnika");
+        v.setIme("Odaberite vlasnika: ");
         v.setPrezime("");
         m.addElement(v);
         

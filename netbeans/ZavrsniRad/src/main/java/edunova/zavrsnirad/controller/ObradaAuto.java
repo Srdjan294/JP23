@@ -23,6 +23,7 @@ public class ObradaAuto extends Obrada<Auto> {
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaModel();
+        kontrolaVlasnik();
         kontrolaGodiste();
         kontrolaVolumenRezervoara();
         kontrolaRegistracija();
@@ -85,6 +86,12 @@ public class ObradaAuto extends Obrada<Auto> {
     private void kontrolaRegistracijaDuzina() throws EdunovaException {
         if(entitet.getRegistracija().length() > 50){
             throw new EdunovaException("Registracija predugačka");
+        }
+    }
+
+    private void kontrolaVlasnik() throws EdunovaException {
+        if(entitet.getVlasnik().getId() == -1L){
+            throw new EdunovaException("Ne možete odabrati \"Odaberite vlasnika: \"");
         }
     }
 
