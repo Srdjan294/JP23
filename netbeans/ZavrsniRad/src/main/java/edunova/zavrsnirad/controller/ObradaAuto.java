@@ -32,7 +32,12 @@ public class ObradaAuto extends Obrada<Auto> {
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        kontrolaCreate();
+        kontrolaModel();
+        kontrolaVlasnik();
+        kontrolaGodiste();
+        kontrolaVolumenRezervoara();
+        kontrolaRegistracija();
+        kontrolaPromjenaRegistracijaDupli();
     }
 
     @Override
@@ -99,6 +104,18 @@ public class ObradaAuto extends Obrada<Auto> {
     private void kontrolaNoviRegistracijaDupli() throws EdunovaException {
         List<Auto> l = session
                        .createQuery("from Auto a where a.registracija=:registracija")
+                       .setParameter("registracija", entitet.getRegistracija())
+                       .list();
+        
+        if(l != null && l.size() > 0){
+            throw new EdunovaException("Auto s istom registracijom već postoji");
+        }
+    }
+
+    private void kontrolaPromjenaRegistracijaDupli() throws EdunovaException {
+         List<Auto> l = session
+                       .createQuery("from Auto a where a.registracija=:registracija and a.id!=:id")
+                       .setParameter("id",  entitet.getId())
                        .setParameter("registracija", entitet.getRegistracija())
                        .list();
         
