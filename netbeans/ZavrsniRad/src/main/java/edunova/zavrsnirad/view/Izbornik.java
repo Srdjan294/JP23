@@ -164,6 +164,7 @@ public class Izbornik extends javax.swing.JFrame {
         txtVolumen = new javax.swing.JTextField();
         cmbVlasnici = new javax.swing.JComboBox<>();
         btnDodajAuto = new javax.swing.JButton();
+        btnPromjeniAuto = new javax.swing.JButton();
         jpVlasnici = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstVlasnici = new javax.swing.JList<>();
@@ -311,6 +312,13 @@ public class Izbornik extends javax.swing.JFrame {
             }
         });
 
+        btnPromjeniAuto.setText("Promjeni auto");
+        btnPromjeniAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniAutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpAutiLayout = new javax.swing.GroupLayout(jpAuti);
         jpAuti.setLayout(jpAutiLayout);
         jpAutiLayout.setHorizontalGroup(
@@ -340,7 +348,9 @@ public class Izbornik extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btnDodajAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpAutiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDodajAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPromjeniAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jpAutiLayout.setVerticalGroup(
@@ -352,18 +362,21 @@ public class Izbornik extends javax.swing.JFrame {
                     .addGroup(jpAutiLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpAutiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jpAutiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpAutiLayout.createSequentialGroup()
                                 .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8))
-                            .addComponent(btnDodajAuto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnDodajAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbVlasnici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGodiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpAutiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpAutiLayout.createSequentialGroup()
+                                .addComponent(cmbVlasnici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtGodiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPromjeniAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -816,6 +829,23 @@ public class Izbornik extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDodajAutoActionPerformed
 
+    private void btnPromjeniAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniAutoActionPerformed
+        if(obradaAuto.getEntitet() == null || obradaAuto.getEntitet().getId() == null){
+            JOptionPane.showMessageDialog(rootPane, "Prvo odaberite auto");
+            return;
+        }
+        
+        postaviVrijednostiNaEntitetAuto();
+        
+        try {
+            obradaAuto.update();
+            pocistiUnoseAuta();
+            ucitajAute();
+        } catch (EdunovaException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getPoruka());
+        }
+    }//GEN-LAST:event_btnPromjeniAutoActionPerformed
+
     private void postaviVrijednostiNaEntitetVlasnik() {
         
         var entitet = obradaVlasnik.getEntitet();
@@ -845,6 +875,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JButton btnDodajAuto;
     private javax.swing.JButton btnDodajVlasnika;
     private javax.swing.JButton btnObrisiVlasnika;
+    private javax.swing.JButton btnPromjeniAuto;
     private javax.swing.JButton btnPromjeniVlasnika;
     private javax.swing.JComboBox<Vlasnik> cmbVlasnici;
     private com.github.lgooddatepicker.components.DatePicker datePicker1;
