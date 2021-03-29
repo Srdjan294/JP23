@@ -27,6 +27,7 @@ public class ObradaAuto extends Obrada<Auto> {
         kontrolaGodiste();
         kontrolaVolumenRezervoara();
         kontrolaRegistracija();
+        kontrolaNoviRegistracijaDupli();
     }
 
     @Override
@@ -92,6 +93,17 @@ public class ObradaAuto extends Obrada<Auto> {
     private void kontrolaVlasnik() throws EdunovaException {
         if(entitet.getVlasnik().getId() == -1L){
             throw new EdunovaException("Ne možete odabrati \"Odaberite vlasnika: \"");
+        }
+    }
+
+    private void kontrolaNoviRegistracijaDupli() throws EdunovaException {
+        List<Auto> l = session
+                       .createQuery("from Auto a where a.registracija=:registracija")
+                       .setParameter("registracija", entitet.getRegistracija())
+                       .list();
+        
+        if(l != null && l.size() > 0){
+            throw new EdunovaException("Auto s istom registracijom već postoji");
         }
     }
 
