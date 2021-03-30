@@ -614,14 +614,14 @@ public class Izbornik extends javax.swing.JFrame {
 
         jLabel21.setText("Cijena goriva (kn): ");
 
-        btnDodajGorivo.setText("Dodaj Gorivo");
+        btnDodajGorivo.setText("Dodaj gorivo");
         btnDodajGorivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDodajGorivoActionPerformed(evt);
             }
         });
 
-        btnPromjeniGorivo.setText("Promjeni Gorivo");
+        btnPromjeniGorivo.setText("Promjeni gorivo");
         btnPromjeniGorivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPromjeniGorivoActionPerformed(evt);
