@@ -165,6 +165,7 @@ public class Izbornik extends javax.swing.JFrame {
         cmbVlasnici = new javax.swing.JComboBox<>();
         btnDodajAuto = new javax.swing.JButton();
         btnPromjeniAuto = new javax.swing.JButton();
+        btnObrisiAuto = new javax.swing.JButton();
         jpVlasnici = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstVlasnici = new javax.swing.JList<>();
@@ -329,6 +330,13 @@ public class Izbornik extends javax.swing.JFrame {
             }
         });
 
+        btnObrisiAuto.setText("Obriši auto");
+        btnObrisiAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiAutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpAutiLayout = new javax.swing.GroupLayout(jpAuti);
         jpAuti.setLayout(jpAutiLayout);
         jpAutiLayout.setHorizontalGroup(
@@ -360,7 +368,8 @@ public class Izbornik extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jpAutiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDodajAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPromjeniAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPromjeniAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnObrisiAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jpAutiLayout.setVerticalGroup(
@@ -385,16 +394,19 @@ public class Izbornik extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtGodiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnPromjeniAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtGodiste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtRegistracija, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtVolumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpAutiLayout.createSequentialGroup()
+                                .addComponent(btnPromjeniAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnObrisiAuto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -436,7 +448,7 @@ public class Izbornik extends javax.swing.JFrame {
             }
         });
 
-        btnObrisiVlasnika.setText("Obriši Vlasnika");
+        btnObrisiVlasnika.setText("Obriši vlasnika");
         btnObrisiVlasnika.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnObrisiVlasnikaActionPerformed(evt);
@@ -860,6 +872,23 @@ public class Izbornik extends javax.swing.JFrame {
         ucitajVlasnikecmb();
     }//GEN-LAST:event_jpAutiAncestorAdded
 
+    private void btnObrisiAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiAutoActionPerformed
+         if(obradaAuto.getEntitet() == null || obradaAuto.getEntitet().getId() == null){
+            JOptionPane.showMessageDialog(rootPane, "Prvo odaberite auto");
+            return;
+        }
+        
+       postaviVrijednostiNaEntitetAuto();
+       
+        try {
+            obradaAuto.delete();
+            pocistiUnoseAuta();
+            ucitajAute();
+        } catch (EdunovaException e) {
+            JOptionPane.showMessageDialog(rootPane, e.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrisiAutoActionPerformed
+
     private void postaviVrijednostiNaEntitetVlasnik() {
         
         var entitet = obradaVlasnik.getEntitet();
@@ -888,6 +917,7 @@ public class Izbornik extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajAuto;
     private javax.swing.JButton btnDodajVlasnika;
+    private javax.swing.JButton btnObrisiAuto;
     private javax.swing.JButton btnObrisiVlasnika;
     private javax.swing.JButton btnPromjeniAuto;
     private javax.swing.JButton btnPromjeniVlasnika;
