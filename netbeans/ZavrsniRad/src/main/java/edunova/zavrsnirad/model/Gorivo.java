@@ -33,6 +33,11 @@ public class Gorivo extends Entitet {
     public void setCijena(BigDecimal cijena) {
         this.cijena = cijena;
     }
+
+    @Override
+    public String toString() {
+        return getNaziv();
+    }
     
     
     
