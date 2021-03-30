@@ -287,6 +287,16 @@ public class Izbornik extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Evidencija", new javax.swing.ImageIcon(getClass().getResource("/icons8-file-24.png")), jpEvidencija); // NOI18N
 
+        jpAuti.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jpAutiAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         lstAuti.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstAuti.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -845,6 +855,10 @@ public class Izbornik extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, e.getPoruka());
         }
     }//GEN-LAST:event_btnPromjeniAutoActionPerformed
+
+    private void jpAutiAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jpAutiAncestorAdded
+        ucitajVlasnikecmb();
+    }//GEN-LAST:event_jpAutiAncestorAdded
 
     private void postaviVrijednostiNaEntitetVlasnik() {
         
