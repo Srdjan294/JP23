@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -291,6 +292,16 @@ public class Izbornik extends javax.swing.JFrame {
         lblVrijeme.setText("vrijeme");
         jToolBar1.add(lblVrijeme);
 
+        jpEvidencija.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jpEvidencijaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         lstEvidencija.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstEvidencija.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -328,14 +339,14 @@ public class Izbornik extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtPocetnoStanje)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtZavrsnoStanje, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                         .addComponent(dpDatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cmbAuti, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cmbGorivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCijenaGoriva))
+                        .addComponent(txtCijenaGoriva)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNatocenoLitara, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(192, Short.MAX_VALUE))
         );
@@ -1103,15 +1114,23 @@ public class Izbornik extends javax.swing.JFrame {
         obradaEvidencija.setEntitet(lstEvidencija.getSelectedValue());
         
         var e = obradaEvidencija.getEntitet();
+        var g = obradaGorivo.getEntitet();
         
         dpDatum.setDate(e.getDatum());
         cmbAuti.setSelectedItem(e.getAuto());
         cmbGorivo.setSelectedItem(e.getGorivo());
-        //txtCijenaGoriva
+        
+        //txtCijenaGoriva.setText((String)cmbGorivo.getSelectedItem());
+        
         txtNatocenoLitara.setText(String.valueOf(e.getNatocenoLitara()));
         txtPocetnoStanje.setText(String.valueOf(e.getPocetnoStanje()));
         txtZavrsnoStanje.setText(String.valueOf(e.getZavrsnoStanje()));
     }//GEN-LAST:event_lstEvidencijaValueChanged
+
+    private void jpEvidencijaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jpEvidencijaAncestorAdded
+        ucitajAutecmb();
+        ucitajGorivocmb();
+    }//GEN-LAST:event_jpEvidencijaAncestorAdded
 
     private void postaviVrijednostiNaEntitetVlasnik() {
         

@@ -39,6 +39,4 @@ public class Gorivo extends Entitet {
         return getNaziv();
     }
     
-    
-    
 }
