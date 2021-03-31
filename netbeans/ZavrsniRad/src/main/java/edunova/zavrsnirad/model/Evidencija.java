@@ -6,6 +6,7 @@
 package edunova.zavrsnirad.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Evidencija extends Entitet {
     
     @ManyToOne
     private Auto auto;
-    private Date datum;
+    private LocalDate datum;
     private BigDecimal natocenoLitara;
     @ManyToOne
     private Gorivo gorivo;
@@ -42,11 +43,11 @@ public class Evidencija extends Entitet {
         this.auto = auto;
     }
 
-    public Date getDatum() {
+    public LocalDate getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(LocalDate datum) {
         this.datum = datum;
     }
 
