@@ -8,6 +8,7 @@ package edunova.zavrsnirad.view;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import edunova.zavrsnirad.controller.ObradaAuto;
+import edunova.zavrsnirad.controller.ObradaEvidencija;
 import edunova.zavrsnirad.controller.ObradaGorivo;
 import edunova.zavrsnirad.controller.ObradaVlasnik;
 import edunova.zavrsnirad.model.Auto;
@@ -38,6 +39,7 @@ public class Izbornik extends javax.swing.JFrame {
     private ObradaVlasnik obradaVlasnik;
     private ObradaAuto obradaAuto;
     private ObradaGorivo obradaGorivo;
+    private ObradaEvidencija obradaEvidencija;
 
     /**
      * Creates new form Izbornik
@@ -47,6 +49,7 @@ public class Izbornik extends javax.swing.JFrame {
         obradaVlasnik = new ObradaVlasnik();
         obradaAuto = new ObradaAuto();
         obradaGorivo = new ObradaGorivo();
+        obradaEvidencija = new ObradaEvidencija();
         setTitle(Aplikacija.NASLOV_APP + " " + 
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
@@ -54,7 +57,10 @@ public class Izbornik extends javax.swing.JFrame {
         ucitajVlasnike();
         ucitajAute();
         ucitajGorivo();
+        ucitajEvidenciju();
         ucitajVlasnikecmb();
+        ucitajAutecmb();
+        ucitajGorivocmb();
     }
 
     private void ucitajVlasnike() {
@@ -129,6 +135,40 @@ public class Izbornik extends javax.swing.JFrame {
         txtCijena.setText("");
     }
 
+    private void ucitajAutecmb() {
+        DefaultComboBoxModel<Auto> m = new DefaultComboBoxModel<>();
+        
+        Auto a = new Auto();
+        a.setId(-1L);
+        a.setModel("Odaberite auto: ");
+        m.addElement(a);
+        
+        m.addAll(new ObradaAuto().getPodaci());
+        cmbAuti.setModel(m);
+        
+        cmbAuti.setSelectedIndex(0);
+    }
+
+    private void ucitajGorivocmb() {
+        DefaultComboBoxModel<Gorivo> m = new DefaultComboBoxModel<>();
+        
+        Gorivo g = new Gorivo();
+        g.setId(-1L);
+        g.setNaziv("Odaberite gorivo: ");
+        m.addElement(g);
+        
+        m.addAll(new ObradaGorivo().getPodaci());
+        cmbGorivo.setModel(m);
+        
+        cmbGorivo.setSelectedIndex(0);
+    }
+
+    private void ucitajEvidenciju() {
+        DefaultListModel<Evidencija> m = new DefaultListModel<>();
+        m.addAll(obradaEvidencija.getPodaci());
+        lstEvidencija.setModel(m);
+    }
+
     private class Vrijeme extends Thread{
         
         private SimpleDateFormat df = new SimpleDateFormat("dd. MM. YYYY. HH:mm:ss");
@@ -164,16 +204,18 @@ public class Izbornik extends javax.swing.JFrame {
         lstEvidencija = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtNatocenoLitara = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtPocetnoStanje = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
+        txtZavrsnoStanje = new javax.swing.JTextField();
+        dpDatum = new com.github.lgooddatepicker.components.DatePicker();
+        cmbAuti = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        cmbGorivo = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        txtCijenaGoriva = new javax.swing.JTextField();
         jpAuti = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstAuti = new javax.swing.JList<>();
@@ -243,6 +285,11 @@ public class Izbornik extends javax.swing.JFrame {
         jToolBar1.add(lblVrijeme);
 
         lstEvidencija.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstEvidencija.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstEvidencijaValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstEvidencija);
 
         jLabel1.setText("Datum:");
@@ -251,11 +298,13 @@ public class Izbornik extends javax.swing.JFrame {
 
         jLabel4.setText("Natočeno litara:");
 
-        jLabel5.setText("Ukupna cijena goriva:");
-
         jLabel6.setText("Početno stanje brojila:");
 
         jLabel7.setText("Završno stanje brojila:");
+
+        jLabel5.setText("Gorivo:");
+
+        jLabel22.setText("Cijena goriva:");
 
         javax.swing.GroupLayout jpEvidencijaLayout = new javax.swing.GroupLayout(jpEvidencija);
         jpEvidencija.setLayout(jpEvidencijaLayout);
@@ -265,19 +314,22 @@ public class Izbornik extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jpEvidencijaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2)
+                .addGroup(jpEvidencijaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                    .addComponent(datePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpEvidencijaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPocetnoStanje)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtZavrsnoStanje, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                        .addComponent(dpDatum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbAuti, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbGorivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCijenaGoriva))
+                    .addComponent(txtNatocenoLitara, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(192, Short.MAX_VALUE))
         );
         jpEvidencijaLayout.setVerticalGroup(
@@ -289,27 +341,31 @@ public class Izbornik extends javax.swing.JFrame {
                     .addGroup(jpEvidencijaLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(datePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dpDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbAuti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbGorivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCijenaGoriva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNatocenoLitara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPocetnoStanje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtZavrsnoStanje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -1028,6 +1084,28 @@ public class Izbornik extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnObrisiGorivoActionPerformed
 
+    private void lstEvidencijaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstEvidencijaValueChanged
+        if(evt.getValueIsAdjusting()){
+            return;
+        }
+        
+        if(lstEvidencija.getSelectedValue() == null){
+            return;
+        }
+        
+        obradaEvidencija.setEntitet(lstEvidencija.getSelectedValue());
+        
+        var e = obradaEvidencija.getEntitet();
+        
+        dpDatum.setDate(e.getDatum());
+        cmbAuti.setSelectedItem(e.getAuto());
+        cmbGorivo.setSelectedItem(e.getGorivo());
+        //txtCijenaGoriva
+        txtNatocenoLitara.setText(String.valueOf(e.getNatocenoLitara()));
+        txtPocetnoStanje.setText(String.valueOf(e.getPocetnoStanje()));
+        txtZavrsnoStanje.setText(String.valueOf(e.getZavrsnoStanje()));
+    }//GEN-LAST:event_lstEvidencijaValueChanged
+
     private void postaviVrijednostiNaEntitetVlasnik() {
         
         var entitet = obradaVlasnik.getEntitet();
@@ -1063,8 +1141,10 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JButton btnPromjeniAuto;
     private javax.swing.JButton btnPromjeniGorivo;
     private javax.swing.JButton btnPromjeniVlasnika;
+    private javax.swing.JComboBox<Auto> cmbAuti;
+    private javax.swing.JComboBox<Gorivo> cmbGorivo;
     private javax.swing.JComboBox<Vlasnik> cmbVlasnici;
-    private com.github.lgooddatepicker.components.DatePicker datePicker1;
+    private com.github.lgooddatepicker.components.DatePicker dpDatum;
     private com.github.lgooddatepicker.components.DatePicker dpDatumRodenja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1080,6 +1160,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1095,11 +1176,6 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmDatoteka;
     private javax.swing.JMenu jmOnama;
@@ -1121,16 +1197,20 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JList<Vlasnik> lstVlasnici;
     private javax.swing.JTextField txtBrojMob;
     private javax.swing.JTextField txtCijena;
+    private javax.swing.JTextField txtCijenaGoriva;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGodiste;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtModel;
+    private javax.swing.JTextField txtNatocenoLitara;
     private javax.swing.JTextField txtNazivGoriva;
     private javax.swing.JTextField txtNazivOznake;
     private javax.swing.JTextField txtOib;
+    private javax.swing.JTextField txtPocetnoStanje;
     private javax.swing.JTextField txtPrezime;
     private javax.swing.JTextField txtRegistracija;
     private javax.swing.JTextField txtSpol;
     private javax.swing.JTextField txtVolumen;
+    private javax.swing.JTextField txtZavrsnoStanje;
     // End of variables declaration//GEN-END:variables
 }
