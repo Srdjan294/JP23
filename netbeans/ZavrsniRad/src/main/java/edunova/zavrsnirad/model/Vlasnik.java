@@ -5,7 +5,6 @@
  */
 package edunova.zavrsnirad.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +23,7 @@ public class Vlasnik extends Entitet {
     private String oib;
     private String brojMobitela;
     private String email;
-    private LocalDate datumRodenja;
+    private Date datumRodenja;
     private String spol;
     
     @OneToMany(mappedBy="vlasnik")
@@ -78,11 +77,11 @@ public class Vlasnik extends Entitet {
         this.email = email;
     }
 
-    public LocalDate getDatumRodenja() {
+    public Date getDatumRodenja() {
         return datumRodenja;
     }
 
-    public void setDatumRodenja(LocalDate datumRodenja) {
+    public void setDatumRodenja(Date datumRodenja) {
         this.datumRodenja = datumRodenja;
     }
 
