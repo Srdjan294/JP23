@@ -75,7 +75,7 @@ public class Test {
         ObradaPolaznik s = new ObradaPolaznik();
         Polaznik p;
         
-        for(int i=0; i<1; i++){
+        for(int i=0; i<1000; i++){
             p=new Polaznik();
             p.setIme(faker.name().firstName());
             p.setPrezime(faker.name().lastName());
