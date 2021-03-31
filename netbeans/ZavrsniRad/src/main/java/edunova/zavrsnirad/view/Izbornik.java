@@ -54,6 +54,7 @@ public class Izbornik extends javax.swing.JFrame {
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
         prilagodiDpDatumRodenja();
+        prilagodiDpDatum();
         ucitajVlasnike();
         ucitajAute();
         ucitajGorivo();
@@ -167,6 +168,12 @@ public class Izbornik extends javax.swing.JFrame {
         DefaultListModel<Evidencija> m = new DefaultListModel<>();
         m.addAll(obradaEvidencija.getPodaci());
         lstEvidencija.setModel(m);
+    }
+
+    private void prilagodiDpDatum() {
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr","HR"));
+        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
+        dpDatum.setSettings(dps);
     }
 
     private class Vrijeme extends Thread{
