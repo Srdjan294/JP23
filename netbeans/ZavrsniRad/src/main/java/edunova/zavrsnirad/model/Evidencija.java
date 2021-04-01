@@ -28,10 +28,10 @@ public class Evidencija extends Entitet {
     private Auto auto;
     private LocalDate datum;
     private BigDecimal natocenoLitara;
-    @ManyToOne
-    private Gorivo gorivo;
     private int pocetnoStanje;
     private int zavrsnoStanje;
+    @ManyToOne
+    private Gorivo gorivo;
     @ManyToMany 
     private List<Oznaka> oznaka = new ArrayList<>();
 
@@ -59,14 +59,6 @@ public class Evidencija extends Entitet {
         this.natocenoLitara = natocenoLitara;
     }
 
-    public Gorivo getGorivo() {
-        return gorivo;
-    }
-
-    public void setGorivo(Gorivo gorivo) {
-        this.gorivo = gorivo;
-    }
-   
     public int getPocetnoStanje() {
         return pocetnoStanje;
     }
@@ -89,6 +81,14 @@ public class Evidencija extends Entitet {
 
     public void setOznaka(List<Oznaka> oznaka) {
         this.oznaka = oznaka;
+    }
+
+    public Gorivo getGorivo() {
+        return gorivo;
+    }
+
+    public void setGorivo(Gorivo gorivo) {
+        this.gorivo = gorivo;
     }
 
     @Override

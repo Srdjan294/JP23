@@ -39,8 +39,8 @@ public class Izbornik extends javax.swing.JFrame {
     
     private ObradaVlasnik obradaVlasnik;
     private ObradaAuto obradaAuto;
-    private ObradaGorivo obradaGorivo;
     private ObradaEvidencija obradaEvidencija;
+    private ObradaGorivo obradaGorivo;
 
     /**
      * Creates new form Izbornik
@@ -49,8 +49,8 @@ public class Izbornik extends javax.swing.JFrame {
         initComponents();
         obradaVlasnik = new ObradaVlasnik();
         obradaAuto = new ObradaAuto();
-        obradaGorivo = new ObradaGorivo();
         obradaEvidencija = new ObradaEvidencija();
+        obradaGorivo = new ObradaGorivo();
         setTitle(Aplikacija.NASLOV_APP + " " + 
                 Aplikacija.operater.getImePrezime());
         new Vrijeme().start();
@@ -119,24 +119,6 @@ public class Izbornik extends javax.swing.JFrame {
         txtVolumen.setText("");
     }
 
-    private void ucitajGorivo() {
-        DefaultListModel<Gorivo> m = new DefaultListModel<>();
-        m.addAll(obradaGorivo.getPodaci());
-        lstGorivo.setModel(m);
-    }
-
-    private void postaviVrijednostiNaEntitetGorivo() {
-        var entitet = obradaGorivo.getEntitet();
-        
-        entitet.setNaziv(txtNazivGoriva.getText());
-        entitet.setCijena(new BigDecimal(txtCijena.getText()).setScale(2,RoundingMode.DOWN));
-    }
-
-    private void pocistiUnoseGoriva() {
-        txtNazivGoriva.setText("");
-        txtCijena.setText("");
-    }
-
     private void ucitajAutecmb() {
         DefaultComboBoxModel<Auto> m = new DefaultComboBoxModel<>();
         
@@ -151,6 +133,24 @@ public class Izbornik extends javax.swing.JFrame {
         cmbAuti.setSelectedIndex(0);
     }
 
+    private void ucitajEvidenciju() {
+        DefaultListModel<Evidencija> m = new DefaultListModel<>();
+        m.addAll(obradaEvidencija.getPodaci());
+        lstEvidencija.setModel(m);
+    }
+
+    private void prilagodiDpDatum() {
+        DatePickerSettings dps = new DatePickerSettings(new Locale("hr","HR"));
+        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
+        dpDatum.setSettings(dps);
+    }
+
+    private void ucitajGorivo() {
+        DefaultListModel<Gorivo> m = new DefaultListModel<>();
+        m.addAll(obradaGorivo.getPodaci());
+        lstGorivo.setModel(m);
+    }
+
     private void ucitajGorivocmb() {
         DefaultComboBoxModel<Gorivo> m = new DefaultComboBoxModel<>();
         
@@ -162,19 +162,20 @@ public class Izbornik extends javax.swing.JFrame {
         m.addAll(new ObradaGorivo().getPodaci());
         cmbGorivo.setModel(m);
         
-        cmbGorivo.setSelectedIndex(0);
+        cmbGorivo.setSelectedIndex(0); 
     }
 
-    private void ucitajEvidenciju() {
-        DefaultListModel<Evidencija> m = new DefaultListModel<>();
-        m.addAll(obradaEvidencija.getPodaci());
-        lstEvidencija.setModel(m);
+    private void postaviVrijednostiNaEntitetGorivo() {
+        var entitet = obradaGorivo.getEntitet();
+        
+        entitet.setNaziv(txtNazivGoriva.getText());
+        entitet.setCijena(new BigDecimal(txtCijena.getText()).setScale(2,RoundingMode.DOWN));
+        
     }
 
-    private void prilagodiDpDatum() {
-        DatePickerSettings dps = new DatePickerSettings(new Locale("hr","HR"));
-        dps.setFormatForDatesCommonEra("dd.MM.yyyy");
-        dpDatum.setSettings(dps);
+    private void pocistiUnoseGoriva() {
+        txtNazivGoriva.setText("");
+        txtCijena.setText("");
     }
 
     private class Vrijeme extends Thread{
@@ -1045,7 +1046,7 @@ public class Izbornik extends javax.swing.JFrame {
         var g = obradaGorivo.getEntitet();
         
         txtNazivGoriva.setText(g.getNaziv());
-        txtCijena.setText(String.valueOf(g.getCijena()));
+        txtCijena.setText(g.getCijena().setScale(2, RoundingMode.HALF_UP).toString());
         
         
     }//GEN-LAST:event_lstGorivoValueChanged
