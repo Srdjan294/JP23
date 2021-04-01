@@ -17,6 +17,7 @@ import edunova.zavrsnirad.model.Gorivo;
 import edunova.zavrsnirad.model.Oznaka;
 import edunova.zavrsnirad.model.Vlasnik;
 import edunova.zavrsnirad.util.EdunovaException;
+import edunova.zavrsnirad.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -921,6 +922,9 @@ public class Izbornik extends javax.swing.JFrame {
             ucitajVlasnike();
         } catch (EdunovaException e) {
             JOptionPane.showMessageDialog(rootPane, e.getPoruka());
+            pocistiUnoseVlasnika();
+            HibernateUtil.getSession().clear();
+            ucitajVlasnike();
         }
     }//GEN-LAST:event_btnPromjeniVlasnikaActionPerformed
 
@@ -1008,6 +1012,9 @@ public class Izbornik extends javax.swing.JFrame {
             ucitajAute();
         } catch (EdunovaException e) {
             JOptionPane.showMessageDialog(rootPane, e.getPoruka());
+            pocistiUnoseAuta();
+            HibernateUtil.getSession().clear();
+            ucitajAute();
         }
     }//GEN-LAST:event_btnPromjeniAutoActionPerformed
 
