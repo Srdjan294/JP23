@@ -27,11 +27,10 @@ public class Evidencija extends Entitet {
     @ManyToOne
     private Auto auto;
     private LocalDate datum;
+    private BigDecimal cijenaGorivaPoLitri;
     private BigDecimal natocenoLitara;
     private int pocetnoStanje;
     private int zavrsnoStanje;
-    @ManyToOne
-    private Gorivo gorivo;
     @ManyToMany 
     private List<Oznaka> oznaka = new ArrayList<>();
 
@@ -83,17 +82,21 @@ public class Evidencija extends Entitet {
         this.oznaka = oznaka;
     }
 
-    public Gorivo getGorivo() {
-        return gorivo;
+    public BigDecimal getCijenaGorivaPoLitri() {
+        return cijenaGorivaPoLitri;
     }
 
-    public void setGorivo(Gorivo gorivo) {
-        this.gorivo = gorivo;
+    public void setCijenaGorivaPoLitri(BigDecimal cijenaGorivaPoLitri) {
+        this.cijenaGorivaPoLitri = cijenaGorivaPoLitri;
     }
 
     @Override
     public String toString() {
-        return getDatum().toString();
+        if(getAuto() == null){
+            return getDatum().toString() + " [Auto nije odabran]";
+        }
+        return getDatum().toString() + " " + "[" + getAuto() + "]";
+        
     }
    
 }

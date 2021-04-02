@@ -24,6 +24,7 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
     @Override
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaNatocenoLitara();
+        kontrolaCijenaGoriva();
         kontrolaPocetnoStanje();
         kontrolaZavrsnoStanje();
     }
@@ -54,6 +55,13 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
     private void kontrolaZavrsnoStanje() throws EdunovaException {
         if(entitet.getZavrsnoStanje() == 0){
             throw new EdunovaException("Zavrsno stanje ne smije biti nula");
+        }
+    }
+
+    //kontrola Cijena goriva po litri
+    private void kontrolaCijenaGoriva() throws EdunovaException {
+        if(entitet.getCijenaGorivaPoLitri()== null || entitet.getCijenaGorivaPoLitri().compareTo(BigDecimal.ZERO) <= 0){
+            throw new EdunovaException("Cijena goriva ne smije biti nula ili manje od nule");
         }
     }
     

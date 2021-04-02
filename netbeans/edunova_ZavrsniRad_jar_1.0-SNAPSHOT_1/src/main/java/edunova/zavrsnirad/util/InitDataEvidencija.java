@@ -23,6 +23,7 @@ public class InitDataEvidencija {
         e.setDatum(LocalDate.of(2021, Month.MARCH, 31));
         e.setPocetnoStanje(0);
         e.setZavrsnoStanje(100);
+        e.setCijenaGorivaPoLitri(new BigDecimal(9.25));
         e.setNatocenoLitara(new BigDecimal(20.02));
         
         ObradaEvidencija oe = new ObradaEvidencija();
