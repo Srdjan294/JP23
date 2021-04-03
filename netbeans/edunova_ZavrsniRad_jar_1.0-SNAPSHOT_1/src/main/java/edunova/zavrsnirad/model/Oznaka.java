@@ -23,6 +23,9 @@ public class Oznaka extends Entitet {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return getNaziv();
+    }
 }
