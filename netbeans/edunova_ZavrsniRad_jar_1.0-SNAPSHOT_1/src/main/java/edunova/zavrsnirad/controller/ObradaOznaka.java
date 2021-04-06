@@ -22,7 +22,7 @@ public class ObradaOznaka extends Obrada<Oznaka> {
 
     @Override
     protected void kontrolaCreate() throws EdunovaException {
-         konrolaNaziv();   
+         kontrolaNaziv();   
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ObradaOznaka extends Obrada<Oznaka> {
     }
 
     //kontrola Naziv
-    private void konrolaNaziv() throws EdunovaException {
+    private void kontrolaNaziv() throws EdunovaException {
        kontrolaNazivPostavljen();
        kontrolaNazivDuzina();
     }
