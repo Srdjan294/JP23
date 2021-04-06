@@ -6,6 +6,7 @@
 package edunova.zavrsnirad.controller;
 
 import edunova.zavrsnirad.model.Auto;
+import edunova.zavrsnirad.model.Evidencija;
 import edunova.zavrsnirad.util.EdunovaException;
 import java.util.List;
 
@@ -42,7 +43,15 @@ public class ObradaAuto extends Obrada<Auto> {
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+         if(!entitet.getEvidencije().isEmpty()){
+            StringBuilder sb = new StringBuilder();
+            sb.append("Auto ne možete obrisati jer je u evidenciji: ");
+            for(Evidencija e : entitet.getEvidencije()){
+                sb.append(e.getDatum());
+                sb.append(", ");
+            }
+            throw new EdunovaException(sb.toString());
+        }
     }
 
     //kontrola Model

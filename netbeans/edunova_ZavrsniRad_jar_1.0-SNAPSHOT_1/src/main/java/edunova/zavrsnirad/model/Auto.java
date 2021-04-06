@@ -5,8 +5,11 @@
  */
 package edunova.zavrsnirad.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -21,6 +24,19 @@ public class Auto extends Entitet {
     private String registracija;
     @ManyToOne
     private Vlasnik vlasnik;
+    
+    @OneToMany(mappedBy="auto")
+    private List<Evidencija> evidencije = new ArrayList<>();
+
+    public List<Evidencija> getEvidencije() {
+        return evidencije;
+    }
+
+    public void setEvidencije(List<Evidencija> evidencije) {
+        this.evidencije = evidencije;
+    }
+    
+    
 
     public String getModel() {
         return model;
