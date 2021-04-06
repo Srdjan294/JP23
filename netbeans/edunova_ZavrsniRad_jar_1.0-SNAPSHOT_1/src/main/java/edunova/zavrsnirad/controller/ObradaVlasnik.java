@@ -44,7 +44,7 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     protected void kontrolaDelete() throws EdunovaException {
         if(!entitet.getAuti().isEmpty()){
             StringBuilder sb = new StringBuilder();
-            sb.append("Vlasnika ne možete obrisati jer posjeduje auto");
+            sb.append("Vlasnika ne možete obrisati jer posjeduje auto: ");
             for(Auto a : entitet.getAuti()){
                 sb.append(a.getModel());
                 sb.append(", ");
