@@ -1151,9 +1151,6 @@ public class Izbornik extends javax.swing.JFrame {
             ucitajEvidenciju();
         } catch (EdunovaException e) {
             JOptionPane.showMessageDialog(rootPane, e.getPoruka());
-            pocistiUnoseEvidencije();
-            HibernateUtil.getSession().clear();
-            ucitajEvidenciju();
         }
     }//GEN-LAST:event_btnPromjeniEvidencijuActionPerformed
 

@@ -31,7 +31,7 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
-        kontrolaCreate();
+        
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
     //kontrola Završno stanje
     private void kontrolaZavrsnoStanje() throws EdunovaException {
         if(entitet.getZavrsnoStanje() == 0){
-            throw new EdunovaException("Zavrsno stanje ne smije biti nula");
+            throw new EdunovaException("Završno stanje ne smije biti nula");
         }
     }
 
