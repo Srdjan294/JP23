@@ -32,7 +32,9 @@ public class ObradaOznaka extends Obrada<Oznaka> {
 
     @Override
     protected void kontrolaDelete() throws EdunovaException {
-        
+        if(entitet.getEvidencije().size() > 0){
+            throw new EdunovaException("Ne možete obrisati oznaku jer se koristi u evidenciji");
+        }
     }
 
     //kontrola Naziv

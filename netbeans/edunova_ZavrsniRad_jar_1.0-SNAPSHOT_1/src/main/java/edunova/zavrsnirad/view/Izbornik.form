@@ -159,10 +159,10 @@
                                   <Component id="txtCijenaGoriva" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnDodajEvidenciju" max="32767" attributes="0"/>
-                                  <Component id="btnPromjeniEvidenciju" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnPromjeniEvidenciju" alignment="1" pref="280" max="32767" attributes="0"/>
+                                  <Component id="btnDodajEvidenciju" alignment="1" max="32767" attributes="0"/>
                                   <Component id="btnObrisiEvidenciju" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -183,7 +183,7 @@
                                   <Component id="jScrollPane6" min="-2" pref="220" max="-2" attributes="0"/>
                                   <Component id="jLabel20" min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -221,36 +221,36 @@
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtNatocenoLitara" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtPocetnoStanje" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtZavrsnoStanje" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jScrollPane5" pref="177" max="32767" attributes="0"/>
+                                              <Component id="jScrollPane6" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnDodajUEvidenciju" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnObrisiIzEvidencije" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                                   <Component id="btnPromjeniEvidenciju" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtNatocenoLitara" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtPocetnoStanje" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtZavrsnoStanje" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jScrollPane5" pref="177" max="32767" attributes="0"/>
-                                      <Component id="jScrollPane6" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnDodajUEvidenciju" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnObrisiIzEvidencije" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
@@ -471,11 +471,11 @@
                               <Component id="jLabel8" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="157" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnDodajAuto" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="btnPromjeniAuto" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="btnObrisiAuto" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnPromjeniAuto" alignment="1" pref="280" max="32767" attributes="0"/>
+                          <Component id="btnObrisiAuto" alignment="1" pref="280" max="32767" attributes="0"/>
+                          <Component id="btnDodajAuto" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -523,7 +523,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -654,10 +654,10 @@
                                   <Component id="txtPrezime" min="-2" pref="229" max="-2" attributes="0"/>
                                   <Component id="txtIme" min="-2" pref="229" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="158" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnPromjeniVlasnika" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <Component id="btnDodajVlasnika" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnPromjeniVlasnika" pref="280" max="32767" attributes="0"/>
+                                  <Component id="btnDodajVlasnika" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -666,16 +666,14 @@
                                   <Component id="txtBrojMob" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                                   <Component id="jLabel12" min="-2" pref="94" max="-2" attributes="0"/>
                                   <Component id="dpDatumRodenja" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jLabel15" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtOib" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnObrisiVlasnika" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Component id="txtOib" min="-2" pref="229" max="-2" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <Component id="btnObrisiVlasnika" min="-2" pref="280" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -838,6 +836,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jpOznake">
+          <Events>
+            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jpOznakeAncestorAdded"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Oznake">
@@ -865,9 +866,11 @@
                               <Component id="txtNazivOznake" min="-2" pref="228" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnObrisiOznaku" pref="288" max="32767" attributes="0"/>
-                                  <Component id="btnPromjeniOznaku" pref="288" max="32767" attributes="0"/>
-                                  <Component id="btnDodajOznaku" pref="288" max="32767" attributes="0"/>
+                                  <Component id="btnObrisiOznaku" pref="280" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnPromjeniOznaku" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnDodajOznaku" alignment="1" pref="280" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
@@ -894,7 +897,7 @@
                               <Component id="btnObrisiOznaku" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

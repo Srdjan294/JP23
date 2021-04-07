@@ -5,7 +5,12 @@
  */
 package edunova.zavrsnirad.model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -15,6 +20,16 @@ import javax.persistence.Entity;
 public class Oznaka extends Entitet {
     
     private String naziv;
+    @ManyToMany(mappedBy = "oznaka")
+    private Set<Evidencija> evidencije = new HashSet<>();
+
+    public Set<Evidencija> getEvidencije() {
+        return evidencije;
+    }
+
+    public void setEvidencije(Set<Evidencija> evidencije) {
+        this.evidencije = evidencije;
+    }
 
     public String getNaziv() {
         return naziv;
