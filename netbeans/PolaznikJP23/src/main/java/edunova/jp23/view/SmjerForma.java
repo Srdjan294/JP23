@@ -6,6 +6,7 @@
 package edunova.jp23.view;
 
 import edunova.jp23.controller.ObradaSmjer;
+import edunova.jp23.model.Mjesto;
 import edunova.jp23.model.Smjer;
 import edunova.jp23.util.EdunovaException;
 import java.math.BigDecimal;
@@ -19,10 +20,11 @@ import javax.swing.ListModel;
  *
  * @author srdja
  */
-public class SmjerForma extends javax.swing.JFrame {
+public class SmjerForma extends javax.swing.JFrame
+implements MjestoTrazitelj{
 
     private ObradaSmjer obrada;
-    
+    private Mjesto odabranoMjesto;
 
     /**
      * Creates new form FormaSmjerovi
@@ -55,6 +57,8 @@ public class SmjerForma extends javax.swing.JFrame {
         btnDodaj = new javax.swing.JButton();
         btnPromjeni = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
+        lblMjesto = new javax.swing.JLabel();
+        btnTraziMjesto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,6 +99,15 @@ public class SmjerForma extends javax.swing.JFrame {
             }
         });
 
+        lblMjesto.setText("Odabrano mjesto:");
+
+        btnTraziMjesto.setText("Traži mjesto");
+        btnTraziMjesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTraziMjestoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,12 +125,17 @@ public class SmjerForma extends javax.swing.JFrame {
                         .addComponent(txtNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                         .addComponent(txtTrajanje)
                         .addComponent(txtCijena))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDodaj)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPromjeni)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnObrisi)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblMjesto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnTraziMjesto))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnDodaj)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnPromjeni)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnObrisi))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -139,13 +157,17 @@ public class SmjerForma extends javax.swing.JFrame {
                         .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(chbVerificiran)
-                        .addGap(18, 18, 18)
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMjesto)
+                            .addComponent(btnTraziMjesto))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDodaj)
                             .addComponent(btnPromjeni)
                             .addComponent(btnObrisi)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -232,16 +254,28 @@ public class SmjerForma extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnObrisiActionPerformed
 
+    private void btnTraziMjestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziMjestoActionPerformed
+        
+        new MjestoForma(this).setVisible(true);
+    }//GEN-LAST:event_btnTraziMjestoActionPerformed
+
+    @Override
+    public void postaviOdabranoMjesto(Mjesto m){
+        odabranoMjesto = m;
+        lblMjesto.setText(m.getNaziv());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
+    private javax.swing.JButton btnTraziMjesto;
     private javax.swing.JCheckBox chbVerificiran;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMjesto;
     private javax.swing.JList<Smjer> lstSmjerovi;
     private javax.swing.JTextField txtCijena;
     private javax.swing.JTextField txtNaziv;
@@ -273,6 +307,8 @@ public class SmjerForma extends javax.swing.JFrame {
             entitet.setCijena(BigDecimal.ZERO);
         }
 
+        entitet.setMjesto(odabranoMjesto);
+        
         entitet.setVerificiran(chbVerificiran.isSelected());
 
     }

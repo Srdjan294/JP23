@@ -20,9 +20,7 @@ public abstract class Osoba extends Entitet {
     private String ime;
     private String prezime;
     private String oib;
-    @NotEmpty
-    @NotNull
-    @Email(message = "email nije ispravan")
+
     private String email;
 
     public String getIme() {

@@ -61,6 +61,7 @@ public class Izbornik extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jmOnama = new javax.swing.JMenu();
@@ -87,6 +88,14 @@ public class Izbornik extends javax.swing.JFrame {
 
         jMenuItem3.setText("Predavači");
         jmProgrami.add(jMenuItem3);
+
+        jMenuItem6.setText("Mjesta");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jmProgrami.add(jMenuItem6);
 
         jMenuItem4.setText("Grupe");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +151,10 @@ public class Izbornik extends javax.swing.JFrame {
         new GrupaForma().setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        new MjestoForma(null).setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -151,6 +164,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmOnama;
     private javax.swing.JMenu jmProgrami;
