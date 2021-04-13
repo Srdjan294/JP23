@@ -6,6 +6,10 @@
 package edunova.jp23.view;
 
 import com.github.lgooddatepicker.components.DatePickerSettings;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edunova.jp23.controller.ObradaClan;
 import edunova.jp23.controller.ObradaGrupa;
 import edunova.jp23.controller.ObradaPolaznik;
@@ -14,16 +18,22 @@ import edunova.jp23.controller.ObradaSmjer;
 import edunova.jp23.model.Clan;
 import edunova.jp23.model.Grupa;
 import edunova.jp23.model.Mjesto;
+import edunova.jp23.model.Operater;
 import edunova.jp23.model.Polaznik;
 import edunova.jp23.model.Predavac;
 import edunova.jp23.model.Smjer;
 import edunova.jp23.util.EdunovaException;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -90,6 +100,7 @@ public class GrupaForma extends javax.swing.JFrame
         btnTraziMjesto = new javax.swing.JButton();
         dpDatumUpisa = new com.github.lgooddatepicker.components.DatePicker();
         btnSpremiClana = new javax.swing.JButton();
+        btnJsonExport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -187,6 +198,13 @@ public class GrupaForma extends javax.swing.JFrame
             }
         });
 
+        btnJsonExport.setText("JSON");
+        btnJsonExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJsonExportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -237,7 +255,8 @@ public class GrupaForma extends javax.swing.JFrame
                                     .addComponent(btnPromjena)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(btnBrisanje))))))
+                                        .addComponent(btnBrisanje))
+                                    .addComponent(btnJsonExport)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,11 +316,16 @@ public class GrupaForma extends javax.swing.JFrame
                                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(slBrojPolaznika, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMjesto)
-                            .addComponent(btnTraziMjesto))
-                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblMjesto)
+                                    .addComponent(btnTraziMjesto)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(btnJsonExport)))
+                        .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtUvjet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTrazi))
@@ -534,6 +558,112 @@ public class GrupaForma extends javax.swing.JFrame
         }
     }//GEN-LAST:event_btnSpremiClanaActionPerformed
 
+    private void btnJsonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJsonExportActionPerformed
+        
+        ExclusionStrategy strategija = new ExclusionStrategy() {
+            @Override
+            public boolean shouldSkipField(FieldAttributes fa) {
+                
+                if(fa.getDeclaredClass() == Smjer.class && fa.getName().equals("grupe")){
+                    return true;
+                }
+                
+               if(fa.getDeclaredClass() == Grupa.class && fa.getName().equals("polaznici")){
+                    return true;
+               }
+                
+               if(fa.getDeclaredClass() == Smjer.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Smjer.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Grupa.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Grupa.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Polaznik.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Polaznik.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Predavac.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Predavac.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Mjesto.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Mjesto.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Clan.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Clan.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Operater.class && fa.getName().equals("operaterUnosa")){
+                    return true;
+               }
+               
+               if(fa.getDeclaredClass() == Operater.class && fa.getName().equals("operaterPromjene")){
+                    return true;
+               }
+                
+                return false;
+            }
+
+            @Override
+            public boolean shouldSkipClass(Class<?> type) {
+                if(type == Operater.class){
+                    return true;
+                }
+                
+                return false;
+            }
+        };
+        
+        
+        Gson gson = new GsonBuilder()
+                .setExclusionStrategies(strategija)
+                .setPrettyPrinting().create();
+        
+        JFileChooser jfc = new JFileChooser();
+        jfc.setCurrentDirectory(
+                new File(System.getProperty("user.home")));
+        jfc.setSelectedFile(new File(System.getProperty("user.home") + 
+                File.separator + "grupe.json"));
+        
+        if(jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION){
+            try {
+                BufferedWriter bw = new BufferedWriter(
+                new FileWriter(jfc.getSelectedFile(),StandardCharsets.UTF_8));
+                bw.write(gson.toJson(obrada.getPodaci()));
+                bw.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btnJsonExportActionPerformed
+
     private void ucitajEntitete() {
         
         DefaultListModel<Grupa> m = new DefaultListModel<>();
@@ -584,6 +714,7 @@ public class GrupaForma extends javax.swing.JFrame
     private javax.swing.JButton btnBrisanje;
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnDodajUGrupu;
+    private javax.swing.JButton btnJsonExport;
     private javax.swing.JButton btnObrisiIzGrupe;
     private javax.swing.JButton btnPromjena;
     private javax.swing.JButton btnSpremiClana;
