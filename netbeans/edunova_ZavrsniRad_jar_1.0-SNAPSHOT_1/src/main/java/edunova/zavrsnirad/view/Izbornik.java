@@ -312,6 +312,8 @@ public class Izbornik extends javax.swing.JFrame {
         jmiVlasnici = new javax.swing.JMenuItem();
         jmiOznake = new javax.swing.JMenuItem();
         jmiIzlaz = new javax.swing.JMenuItem();
+        jmRadSEvidencijom = new javax.swing.JMenu();
+        jmEra = new javax.swing.JMenu();
         jmOnama = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -966,6 +968,22 @@ public class Izbornik extends javax.swing.JFrame {
 
         jMenuBar1.add(jmDatoteka);
 
+        jmRadSEvidencijom.setText("Rad s evidencijom");
+        jmRadSEvidencijom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmRadSEvidencijomMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jmRadSEvidencijom);
+
+        jmEra.setText("ERA");
+        jmEra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmEraMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jmEra);
+
         jmOnama.setText("O nama");
         jmOnama.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1433,6 +1451,14 @@ public class Izbornik extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_btnRadSOznakamaActionPerformed
 
+    private void jmRadSEvidencijomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmRadSEvidencijomMouseClicked
+        new RadSEvidencijomForma().setVisible(true);
+    }//GEN-LAST:event_jmRadSEvidencijomMouseClicked
+
+    private void jmEraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmEraMouseClicked
+        new EraForma().setVisible(true);
+    }//GEN-LAST:event_jmEraMouseClicked
+
     private void postaviVrijednostiNaEntitetVlasnik() {
         
         var entitet = obradaVlasnik.getEntitet();
@@ -1518,7 +1544,9 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jmDatoteka;
+    private javax.swing.JMenu jmEra;
     private javax.swing.JMenu jmOnama;
+    private javax.swing.JMenu jmRadSEvidencijom;
     private javax.swing.JMenuItem jmiAuti;
     private javax.swing.JMenuItem jmiEvidencija;
     private javax.swing.JMenuItem jmiIzlaz;

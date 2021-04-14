@@ -79,7 +79,7 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
 
         jLabel3.setText("Auto:");
 
-        jLabel5.setText("Cijena goriva po litri:");
+        jLabel5.setText("Cijena goriva po litri (kn):");
 
         jLabel4.setText("Natočeno litara:");
 

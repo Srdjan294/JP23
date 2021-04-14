@@ -51,6 +51,22 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jmRadSEvidencijom">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rad s evidencijom"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmRadSEvidencijomMouseClicked"/>
+          </Events>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jmEra">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="ERA"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmEraMouseClicked"/>
+          </Events>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jmOnama">
           <Properties>
             <Property name="text" type="java.lang.String" value="O nama"/>
