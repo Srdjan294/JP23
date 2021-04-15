@@ -49,17 +49,7 @@
                                   <Component id="txtDatum" max="32767" attributes="0"/>
                                   <Component id="txtZavrsnoStanje" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="23" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnIzracunUdaljenost" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnIzracunCijene" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <EmptySpace pref="103" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtUkupnaCijena" max="32767" attributes="0"/>
                                   <Component id="txtUdaljenost" alignment="0" max="32767" attributes="0"/>
@@ -74,11 +64,6 @@
                                   <Component id="jLabel9" max="32767" attributes="0"/>
                                   <Component id="jLabel10" max="32767" attributes="0"/>
                                   <Component id="txtPotKunaPoKm" min="-2" pref="229" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnIzracunPotrosnje" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnIzracunPotrosnjeKuna" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -120,7 +105,6 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnIzracunCijene" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -138,7 +122,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnIzracunUdaljenost" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -149,18 +132,12 @@
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtPotGorivaPoKm" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnIzracunPotrosnje" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="txtPotGorivaPoKm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnIzracunPotrosnjeKuna" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPotKunaPoKm" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtPotKunaPoKm" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="536" max="-2" attributes="0"/>
               </Group>
@@ -208,6 +185,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCijenaGoriva">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCijenaGorivaKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -215,6 +195,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNatocenoLitara">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNatocenoLitaraKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -222,6 +205,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPocetnoStanje">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPocetnoStanjeKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -229,6 +215,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtZavrsnoStanje">
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtZavrsnoStanjeKeyReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAuto">
     </Component>
@@ -241,28 +230,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtUkupnaCijena">
     </Component>
-    <Component class="javax.swing.JButton" name="btnIzracunCijene">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzracunCijeneActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prije&#x111;ena udaljenost (km):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtUdaljenost">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnIzracunUdaljenost">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&gt;&gt;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzracunUdaljenostActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -271,28 +244,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtPotGorivaPoKm">
     </Component>
-    <Component class="javax.swing.JButton" name="btnIzracunPotrosnje">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Izra&#x10d;unaj"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzracunPotrosnjeActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
         <Property name="text" type="java.lang.String" value="Potro&#x161;eni iznos u kunama (kn/100km):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPotKunaPoKm">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnIzracunPotrosnjeKuna">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Izra&#x10d;unaj"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIzracunPotrosnjeKunaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>

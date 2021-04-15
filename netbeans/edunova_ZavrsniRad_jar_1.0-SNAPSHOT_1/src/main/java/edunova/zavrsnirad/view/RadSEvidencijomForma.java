@@ -7,6 +7,7 @@ package edunova.zavrsnirad.view;
 
 import edunova.zavrsnirad.controller.ObradaEvidencija;
 import edunova.zavrsnirad.model.Evidencija;
+import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.DefaultListModel;
@@ -51,16 +52,12 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
         txtDatum = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtUkupnaCijena = new javax.swing.JTextField();
-        btnIzracunCijene = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtUdaljenost = new javax.swing.JTextField();
-        btnIzracunUdaljenost = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtPotGorivaPoKm = new javax.swing.JTextField();
-        btnIzracunPotrosnje = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtPotKunaPoKm = new javax.swing.JTextField();
-        btnIzracunPotrosnjeKuna = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -81,47 +78,43 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
 
         jLabel5.setText("Cijena goriva po litri (kn):");
 
+        txtCijenaGoriva.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCijenaGorivaKeyReleased(evt);
+            }
+        });
+
         jLabel4.setText("Natočeno litara:");
+
+        txtNatocenoLitara.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNatocenoLitaraKeyReleased(evt);
+            }
+        });
 
         jLabel6.setText("Početno stanje brojila:");
 
+        txtPocetnoStanje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPocetnoStanjeKeyReleased(evt);
+            }
+        });
+
         jLabel7.setText("Završno stanje brojila:");
+
+        txtZavrsnoStanje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtZavrsnoStanjeKeyReleased(evt);
+            }
+        });
 
         jLabel2.setText("Ukupna cijena goriva (kn):");
 
-        btnIzracunCijene.setText(">>");
-        btnIzracunCijene.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzracunCijeneActionPerformed(evt);
-            }
-        });
-
         jLabel8.setText("Prijeđena udaljenost (km):");
-
-        btnIzracunUdaljenost.setText(">>");
-        btnIzracunUdaljenost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzracunUdaljenostActionPerformed(evt);
-            }
-        });
 
         jLabel9.setText("Potrošnja goriva (L/100km):");
 
-        btnIzracunPotrosnje.setText("Izračunaj");
-        btnIzracunPotrosnje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzracunPotrosnjeActionPerformed(evt);
-            }
-        });
-
         jLabel10.setText("Potrošeni iznos u kunama (kn/100km):");
-
-        btnIzracunPotrosnjeKuna.setText("Izračunaj");
-        btnIzracunPotrosnjeKuna.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIzracunPotrosnjeKunaActionPerformed(evt);
-            }
-        });
 
         jLabel11.setText("Odaberite evidenciju:");
 
@@ -153,14 +146,7 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
                                     .addComponent(txtAuto)
                                     .addComponent(txtDatum)
                                     .addComponent(txtZavrsnoStanje))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnIzracunUdaljenost)
-                                        .addGap(31, 31, 31))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnIzracunCijene)
-                                        .addGap(33, 33, 33)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtUkupnaCijena)
                                     .addComponent(txtUdaljenost)
@@ -173,10 +159,6 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtPotKunaPoKm, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnIzracunPotrosnje)
-                                    .addComponent(btnIzracunPotrosnjeKuna))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -209,7 +191,6 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(btnIzracunCijene)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -224,8 +205,7 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(btnIzracunUdaljenost))
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtZavrsnoStanje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,16 +214,12 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel9)
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPotGorivaPoKm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnIzracunPotrosnje))
+                        .addGap(16, 16, 16)
+                        .addComponent(txtPotGorivaPoKm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnIzracunPotrosnjeKuna)
-                            .addComponent(txtPotKunaPoKm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPotKunaPoKm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -272,49 +248,61 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
         txtNatocenoLitara.setText(String.valueOf(e.getNatocenoLitara()));
         txtPocetnoStanje.setText(String.valueOf(e.getPocetnoStanje()));
         txtZavrsnoStanje.setText(String.valueOf(e.getZavrsnoStanje()));
-    }//GEN-LAST:event_lstEvidencijeValueChanged
-
-    private void btnIzracunCijeneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzracunCijeneActionPerformed
-        var e = obrada.getEntitet();
         
         txtUkupnaCijena.setText(e.getCijenaGorivaPoLitri().multiply(e.getNatocenoLitara())
-                                .setScale(2, RoundingMode.HALF_UP).toString());
-    }//GEN-LAST:event_btnIzracunCijeneActionPerformed
-
-    private void btnIzracunUdaljenostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzracunUdaljenostActionPerformed
-        var e = obrada.getEntitet();
+            .setScale(2, RoundingMode.HALF_UP).toString());
         
         txtUdaljenost.setText(String.valueOf(e.getZavrsnoStanje()-e.getPocetnoStanje()));
-    }//GEN-LAST:event_btnIzracunUdaljenostActionPerformed
-
-    private void btnIzracunPotrosnjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzracunPotrosnjeActionPerformed
-        var e = obrada.getEntitet();
         
         txtPotGorivaPoKm.setText((e.getNatocenoLitara()
-                                .divide((BigDecimal.valueOf(e.getZavrsnoStanje()))
-                                .subtract(BigDecimal.valueOf(e.getPocetnoStanje())),2,RoundingMode.HALF_UP))
-                                .multiply(new BigDecimal(100))
-                                .toString());
-    }//GEN-LAST:event_btnIzracunPotrosnjeActionPerformed
-
-    private void btnIzracunPotrosnjeKunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzracunPotrosnjeKunaActionPerformed
-        var e = obrada.getEntitet();
+            .divide((BigDecimal.valueOf(e.getZavrsnoStanje()))
+                .subtract(BigDecimal.valueOf(e.getPocetnoStanje())),2,RoundingMode.HALF_UP))
+        .multiply(new BigDecimal(100))
+        .toString());
         
         txtPotKunaPoKm.setText((e.getCijenaGorivaPoLitri().multiply(e.getNatocenoLitara())
-                                .setScale(2, RoundingMode.HALF_UP)
-                                .divide((BigDecimal.valueOf(e.getZavrsnoStanje()))
-                                .subtract(BigDecimal.valueOf(e.getPocetnoStanje())),2,RoundingMode.HALF_UP))
-                                .multiply(new BigDecimal(100))
-                                .toString());
-    }//GEN-LAST:event_btnIzracunPotrosnjeKunaActionPerformed
+            .setScale(2, RoundingMode.HALF_UP)
+            .divide((BigDecimal.valueOf(e.getZavrsnoStanje()))
+                .subtract(BigDecimal.valueOf(e.getPocetnoStanje())),2,RoundingMode.HALF_UP))
+        .multiply(new BigDecimal(100))
+        .toString());
+    }//GEN-LAST:event_lstEvidencijeValueChanged
+
+    private void txtCijenaGorivaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCijenaGorivaKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            izracun();
+            izracunPotrosnjaGorivaPoKm();
+            izracunPotrosnjeKunaPoKm();
+        }
+    }//GEN-LAST:event_txtCijenaGorivaKeyReleased
+
+    private void txtNatocenoLitaraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNatocenoLitaraKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            izracun();
+            izracunPotrosnjaGorivaPoKm();
+            izracunPotrosnjeKunaPoKm();
+        }
+    }//GEN-LAST:event_txtNatocenoLitaraKeyReleased
+
+    private void txtPocetnoStanjeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPocetnoStanjeKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            izracunUdaljenost();
+            izracunPotrosnjaGorivaPoKm();
+            izracunPotrosnjeKunaPoKm();
+        }
+    }//GEN-LAST:event_txtPocetnoStanjeKeyReleased
+
+    private void txtZavrsnoStanjeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtZavrsnoStanjeKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            izracunUdaljenost();
+            izracunPotrosnjaGorivaPoKm();
+            izracunPotrosnjeKunaPoKm();
+        }
+    }//GEN-LAST:event_txtZavrsnoStanjeKeyReleased
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIzracunCijene;
-    private javax.swing.JButton btnIzracunPotrosnje;
-    private javax.swing.JButton btnIzracunPotrosnjeKuna;
-    private javax.swing.JButton btnIzracunUdaljenost;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -349,5 +337,41 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
         m.addAll(obrada.getPodaci());
 
         lstEvidencije.setModel(m);
+    }
+
+    private void izracun() {
+        BigDecimal cijena = new BigDecimal(txtCijenaGoriva.getText());
+        BigDecimal natoceno = new BigDecimal(txtNatocenoLitara.getText());
+        
+        txtUkupnaCijena.setText(cijena.multiply(natoceno)
+                                .setScale(2, RoundingMode.HALF_UP)
+                                .toString());
+    }
+
+    private void izracunUdaljenost() {
+        int pocetno = Integer.parseInt(txtPocetnoStanje.getText());
+        int zavrsno = Integer.parseInt(txtZavrsnoStanje.getText());
+        
+        txtUdaljenost.setText(String.valueOf(zavrsno-pocetno));
+    }
+
+    private void izracunPotrosnjaGorivaPoKm() {
+        BigDecimal natoceno = new BigDecimal(txtNatocenoLitara.getText());
+        BigDecimal pocetno = new BigDecimal(txtPocetnoStanje.getText());
+        BigDecimal zavrsno = new BigDecimal(txtZavrsnoStanje.getText());
+        
+        txtPotGorivaPoKm.setText(natoceno.divide(zavrsno.subtract(pocetno),2,RoundingMode.HALF_UP)
+                                .multiply(new BigDecimal(100))
+                                .toString());
+    }
+
+    private void izracunPotrosnjeKunaPoKm() {
+       BigDecimal ukupna = new BigDecimal(txtUkupnaCijena.getText());
+       BigDecimal pocetno = new BigDecimal(txtPocetnoStanje.getText());
+       BigDecimal zavrsno = new BigDecimal(txtZavrsnoStanje.getText());
+       
+       txtPotKunaPoKm.setText(ukupna.divide(zavrsno.subtract(pocetno),2,RoundingMode.HALF_UP)
+                                .multiply(new BigDecimal(100))
+                                .toString());
     }
 }
