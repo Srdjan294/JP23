@@ -23,9 +23,11 @@ import edunova.jp23.model.Polaznik;
 import edunova.jp23.model.Predavac;
 import edunova.jp23.model.Smjer;
 import edunova.jp23.util.EdunovaException;
+import java.awt.Desktop;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.nio.charset.StandardCharsets;
 import java.time.ZoneId;
@@ -36,7 +38,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import org.apache.poi.hwpf.HWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /**
  *
@@ -626,27 +630,36 @@ public class GrupaForma extends javax.swing.JFrame
        if (lstEntiteti.getSelectedValue() == null) {
             return;
         }
-       
-       Grupa g = lstEntiteti.getSelectedValue();
-       if(g==null){
-           return;
-       }
-       
-       JFileChooser jfc=new JFileChooser();
+
+        Grupa g = lstEntiteti.getSelectedValue();
+        if (g == null) {
+            return;
+        }
+
+        JFileChooser jfc = new JFileChooser();
         jfc.setCurrentDirectory(
                 new File(System.getProperty("user.home")));
-        jfc.setSelectedFile(new File(System.getProperty("user.home") + 
-                File.separator + g.getNaziv() + ".docx"));
-        
-        if(jfc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
+        jfc.setSelectedFile(new File(System.getProperty("user.home")
+                + File.separator + g.getNaziv() + ".docx"));
+
+        if (jfc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
             try {
-                HWPFDocument doc = new HWPFDocument(new FileInputStream(jfc.getSelectedFile()));
+               
+                XWPFDocument doc = new XWPFDocument();
+                
+                XWPFParagraph p = doc.createParagraph();
+                XWPFRun newR = p.createRun();
+                newR.setText("Hello " + g.getNaziv());
+
+                doc.write(new FileOutputStream(jfc.getSelectedFile()));
+                doc.close();
+                
+                 Desktop.getDesktop().open(jfc.getSelectedFile());
+     
                 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
-            
         }
     }//GEN-LAST:event_btnWordActionPerformed
 
