@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -245,7 +246,7 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
         txtDatum.setText(e.getDatum().toString());
         txtAuto.setText(e.getAuto().toString());
         txtCijenaGoriva.setText(e.getCijenaGorivaPoLitri().setScale(2, RoundingMode.HALF_UP).toString());       
-        txtNatocenoLitara.setText(String.valueOf(e.getNatocenoLitara()));
+        txtNatocenoLitara.setText(e.getNatocenoLitara().setScale(2, RoundingMode.HALF_UP).toString());
         txtPocetnoStanje.setText(String.valueOf(e.getPocetnoStanje()));
         txtZavrsnoStanje.setText(String.valueOf(e.getZavrsnoStanje()));
         
@@ -270,33 +271,27 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
 
     private void txtCijenaGorivaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCijenaGorivaKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            izracun();
-            izracunPotrosnjaGorivaPoKm();
-            izracunPotrosnjeKunaPoKm();
+            izracunCijeneGoriva();
+            izracuni();
         }
     }//GEN-LAST:event_txtCijenaGorivaKeyReleased
 
     private void txtNatocenoLitaraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNatocenoLitaraKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            izracun();
-            izracunPotrosnjaGorivaPoKm();
-            izracunPotrosnjeKunaPoKm();
+            izracunCijeneGoriva();
+            izracuni();
         }
     }//GEN-LAST:event_txtNatocenoLitaraKeyReleased
 
     private void txtPocetnoStanjeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPocetnoStanjeKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            izracunUdaljenost();
-            izracunPotrosnjaGorivaPoKm();
-            izracunPotrosnjeKunaPoKm();
+            izracuni();
         }
     }//GEN-LAST:event_txtPocetnoStanjeKeyReleased
 
     private void txtZavrsnoStanjeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtZavrsnoStanjeKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            izracunUdaljenost();
-            izracunPotrosnjaGorivaPoKm();
-            izracunPotrosnjeKunaPoKm();
+            izracuni();
         }
     }//GEN-LAST:event_txtZavrsnoStanjeKeyReleased
 
@@ -339,39 +334,44 @@ public class RadSEvidencijomForma extends javax.swing.JFrame {
         lstEvidencije.setModel(m);
     }
 
-    private void izracun() {
+    private void izracunCijeneGoriva() {
         BigDecimal cijena = new BigDecimal(txtCijenaGoriva.getText());
         BigDecimal natoceno = new BigDecimal(txtNatocenoLitara.getText());
         
-        txtUkupnaCijena.setText(cijena.multiply(natoceno)
-                                .setScale(2, RoundingMode.HALF_UP)
-                                .toString());
+        if(cijena.compareTo(BigDecimal.ZERO) >= 0 && natoceno.compareTo(BigDecimal.ZERO) >= 0){
+            txtUkupnaCijena.setText(cijena.multiply(natoceno)
+                                    .setScale(2, RoundingMode.HALF_UP)
+                                    .toString());
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Cijena goriva i natočeno litara ne smiju biti negativni");
+        }
     }
 
-    private void izracunUdaljenost() {
-        int pocetno = Integer.parseInt(txtPocetnoStanje.getText());
-        int zavrsno = Integer.parseInt(txtZavrsnoStanje.getText());
-        
-        txtUdaljenost.setText(String.valueOf(zavrsno-pocetno));
-    }
-
-    private void izracunPotrosnjaGorivaPoKm() {
+    private void izracuni() {
+        BigDecimal ukupna = new BigDecimal(txtUkupnaCijena.getText());
         BigDecimal natoceno = new BigDecimal(txtNatocenoLitara.getText());
         BigDecimal pocetno = new BigDecimal(txtPocetnoStanje.getText());
         BigDecimal zavrsno = new BigDecimal(txtZavrsnoStanje.getText());
         
-        txtPotGorivaPoKm.setText(natoceno.divide(zavrsno.subtract(pocetno),2,RoundingMode.HALF_UP)
+        if((zavrsno.subtract(pocetno)).compareTo(BigDecimal.ZERO) > 0
+                && pocetno.compareTo(BigDecimal.ZERO) > 0){
+            txtUdaljenost.setText(zavrsno.subtract(pocetno).toString());
+            
+            if(natoceno.compareTo(BigDecimal.ZERO) >= 0){
+                txtPotGorivaPoKm.setText(natoceno.divide(zavrsno.subtract(pocetno),2,RoundingMode.HALF_UP)
+                                    .multiply(new BigDecimal(100))
+                                    .toString());
+            }else{
+                txtPotGorivaPoKm.setText("[greška]");
+            }
+            
+            txtPotKunaPoKm.setText(ukupna.divide(zavrsno.subtract(pocetno),2,RoundingMode.HALF_UP)
                                 .multiply(new BigDecimal(100))
                                 .toString());
-    }
-
-    private void izracunPotrosnjeKunaPoKm() {
-       BigDecimal ukupna = new BigDecimal(txtUkupnaCijena.getText());
-       BigDecimal pocetno = new BigDecimal(txtPocetnoStanje.getText());
-       BigDecimal zavrsno = new BigDecimal(txtZavrsnoStanje.getText());
-       
-       txtPotKunaPoKm.setText(ukupna.divide(zavrsno.subtract(pocetno),2,RoundingMode.HALF_UP)
-                                .multiply(new BigDecimal(100))
-                                .toString());
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Završno stanje ne smije biti manje ili jednako od početnog stanja "
+                    + "i stanja ne smiju biti manja od 0");
+        }
+        
     }
 }

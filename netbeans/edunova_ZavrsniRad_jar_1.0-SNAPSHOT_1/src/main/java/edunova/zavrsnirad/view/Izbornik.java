@@ -19,6 +19,8 @@ import edunova.zavrsnirad.util.EdunovaException;
 import edunova.zavrsnirad.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,7 +44,7 @@ public class Izbornik extends javax.swing.JFrame {
     private ObradaAuto obradaAuto;
     private ObradaEvidencija obradaEvidencija;
     private ObradaOznaka obradaOznaka;
-
+    
     /**
      * Creates new form Izbornik
      */
@@ -150,10 +152,24 @@ public class Izbornik extends javax.swing.JFrame {
         
         entitet.setDatum(dpDatum.getDate());
         entitet.setAuto((Auto) cmbAuti.getSelectedItem());
-        entitet.setCijenaGorivaPoLitri(new BigDecimal(txtCijenaGoriva.getText()).setScale(2,RoundingMode.DOWN));
-        entitet.setNatocenoLitara(new BigDecimal(txtNatocenoLitara.getText()).setScale(2, RoundingMode.DOWN));
-        entitet.setPocetnoStanje(Integer.parseInt(txtPocetnoStanje.getText()));
-        entitet.setZavrsnoStanje(Integer.parseInt(txtZavrsnoStanje.getText()));
+        try {
+            entitet.setCijenaGorivaPoLitri(new BigDecimal(txtCijenaGoriva.getText()).setScale(2,RoundingMode.HALF_UP));
+        } catch (Exception e) {
+        }
+        try {
+            entitet.setNatocenoLitara(new BigDecimal(txtNatocenoLitara.getText()).setScale(2, RoundingMode.HALF_UP));
+        } catch (Exception e) {
+        }
+        try {
+            entitet.setPocetnoStanje(Integer.parseInt(txtPocetnoStanje.getText()));
+        } catch (Exception e) {
+        }
+        try {
+            entitet.setZavrsnoStanje(Integer.parseInt(txtZavrsnoStanje.getText()));
+        } catch (Exception e) {
+        }
+        
+        
         
         DefaultListModel<Oznaka> m;
         try {
@@ -1219,7 +1235,6 @@ public class Izbornik extends javax.swing.JFrame {
         obradaEvidencija.setEntitet(lstEvidencija.getSelectedValue());
         
         var e = obradaEvidencija.getEntitet();
-
         
         dpDatum.setDate(e.getDatum());
         cmbAuti.setSelectedItem(e.getAuto());
@@ -1232,7 +1247,7 @@ public class Izbornik extends javax.swing.JFrame {
             }
         }*/
         txtCijenaGoriva.setText(e.getCijenaGorivaPoLitri().setScale(2, RoundingMode.HALF_UP).toString());       
-        txtNatocenoLitara.setText(String.valueOf(e.getNatocenoLitara()));
+        txtNatocenoLitara.setText(e.getNatocenoLitara().setScale(2,RoundingMode.HALF_UP).toString());
         txtPocetnoStanje.setText(String.valueOf(e.getPocetnoStanje()));
         txtZavrsnoStanje.setText(String.valueOf(e.getZavrsnoStanje()));
         
