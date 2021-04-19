@@ -108,9 +108,15 @@ public class Izbornik extends javax.swing.JFrame {
         
         entitet.setModel(txtModel.getText());
         entitet.setVlasnik((Vlasnik) cmbVlasnici.getSelectedItem());
-        entitet.setGodiste(Integer.parseInt(txtGodiste.getText()));
+        try {
+             entitet.setGodiste(Integer.parseInt(txtGodiste.getText()));
+        } catch (Exception e) {
+        }
         entitet.setRegistracija(txtRegistracija.getText());
-        entitet.setVolumenRezervoara(Integer.parseInt(txtVolumen.getText()));
+        try {
+            entitet.setVolumenRezervoara(Integer.parseInt(txtVolumen.getText()));
+        } catch (Exception e) {
+        }
     }
 
     private void pocistiUnoseAuta() {

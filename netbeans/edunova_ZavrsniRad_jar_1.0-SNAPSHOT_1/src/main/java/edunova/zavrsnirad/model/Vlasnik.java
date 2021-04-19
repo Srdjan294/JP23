@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Vlasnik extends Entitet {
     private String prezime;
     private String oib;
     private String brojMobitela;
+    @Email(message = "Email nije ispravan")
     private String email;
     private LocalDate datumRodenja;
     private String spol;

@@ -26,8 +26,8 @@ public class ObradaAuto extends Obrada<Auto> {
         kontrolaModel();
         kontrolaVlasnik();
         kontrolaGodiste();
-        kontrolaVolumenRezervoara();
         kontrolaRegistracija();
+        kontrolaVolumenRezervoara();
         kontrolaNoviRegistracijaDupli();
     }
 
@@ -36,8 +36,8 @@ public class ObradaAuto extends Obrada<Auto> {
         kontrolaModel();
         kontrolaVlasnik();
         kontrolaGodiste();
-        kontrolaVolumenRezervoara();
         kontrolaRegistracija();
+        kontrolaVolumenRezervoara();
         kontrolaPromjenaRegistracijaDupli();
     }
 
@@ -75,14 +75,14 @@ public class ObradaAuto extends Obrada<Auto> {
     //kontrola Godiste
     private void kontrolaGodiste() throws EdunovaException {
          if(entitet.getGodiste() <= 0){
-            throw new EdunovaException("Godiste ne smije biti negativno i mora biti veće od nule");
+            throw new EdunovaException("Godište mora biti postavljeno");
         }
     }
 
     //kontrola VolumenRezorvoara
     private void kontrolaVolumenRezervoara() throws EdunovaException {
         if(entitet.getVolumenRezervoara() <= 0){
-            throw new EdunovaException("Volumen rezervoara ne smije biti negativan i mora biti veći od nule");
+            throw new EdunovaException("Volumen rezervoara mora biti postavljen");
         }
     }
 
@@ -106,7 +106,7 @@ public class ObradaAuto extends Obrada<Auto> {
 
     private void kontrolaVlasnik() throws EdunovaException {
         if(entitet.getVlasnik().getId() == -1L){
-            throw new EdunovaException("Ne možete odabrati \"Odaberite vlasnika: \"");
+            throw new EdunovaException("Vlasnik mora biti postavljen");
         }
     }
 

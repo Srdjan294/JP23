@@ -26,18 +26,24 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
     protected void kontrolaCreate() throws EdunovaException {
         kontrolaIme();
         kontrolaPrezime();
-        kontrolaSpol();
         kontrolaOIB();
         kontrolaNoviOibDupli();
+        kontrolaDatumRodenja();
+        kontrolaBrojMobitela();
+        kontrolaEmail();
+        kontrolaSpol();
     }
 
     @Override
     protected void kontrolaUpdate() throws EdunovaException {
         kontrolaIme();
         kontrolaPrezime();
-        kontrolaSpol();
         kontrolaOIB();
         kontrolaPromjenaOibDupli();
+        kontrolaDatumRodenja();
+        kontrolaBrojMobitela();
+        kontrolaEmail();
+        kontrolaSpol();
     }
 
     @Override
@@ -158,6 +164,24 @@ public class ObradaVlasnik extends Obrada<Vlasnik> {
                         .list();
         if(l != null && l.size() > 0){
             throw new EdunovaException("Vlasnik s istim OIB-om postoji");
+        }
+    }
+
+    private void kontrolaDatumRodenja() throws EdunovaException {
+        if(entitet.getDatumRodenja() == null){
+            throw new EdunovaException("Datum rođenja mora biti postavljen");
+        }
+    }
+
+    private void kontrolaBrojMobitela() throws EdunovaException {
+        if(entitet.getBrojMobitela() == null || entitet.getBrojMobitela().isEmpty()){
+            throw new EdunovaException("Broj mobitela mora biti postavljen");
+        }
+    }
+
+    private void kontrolaEmail() throws EdunovaException {
+        if(entitet.getEmail() == null || entitet.getEmail().isEmpty()){
+            throw new EdunovaException("Email mora biti postavljen");
         }
     }
     
