@@ -14,6 +14,7 @@ import edunova.zavrsnirad.model.Operater;
 public class Aplikacija {
     
     public static final String NASLOV_APP = "AutoEvidencija";
+    public static final String EMAIL = "srdjanfilipovic991@gmail.com";
     
     public static Operater operater;
     

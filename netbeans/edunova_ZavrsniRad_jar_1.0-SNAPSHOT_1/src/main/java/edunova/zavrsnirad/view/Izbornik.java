@@ -1038,7 +1038,8 @@ public class Izbornik extends javax.swing.JFrame {
     private void jmOnamaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmOnamaMouseClicked
        Date d = new Date();
        SimpleDateFormat df = new SimpleDateFormat("YYYY");
-       JOptionPane.showMessageDialog(rootPane, "© " + Aplikacija.NASLOV_APP + " 2020 - " + df.format(d));
+       JOptionPane.showMessageDialog(rootPane, "© " + Aplikacija.NASLOV_APP + " 2020 - " + df.format(d) + 
+               "\n " + Aplikacija.EMAIL);
     }//GEN-LAST:event_jmOnamaMouseClicked
 
     private void jmiEvidencijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEvidencijaActionPerformed
