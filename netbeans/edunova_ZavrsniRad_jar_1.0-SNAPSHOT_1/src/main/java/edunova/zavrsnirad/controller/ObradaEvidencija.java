@@ -50,8 +50,8 @@ public class ObradaEvidencija extends Obrada<Evidencija> {
 
     //kontrola Početno stanje
     private void kontrolaPocetnoStanje() throws EdunovaException {
-        if(entitet.getPocetnoStanje() <= 0){
-            throw new EdunovaException("Početno stanje mora biti postavljeno i veće od nule");
+        if(entitet.getPocetnoStanje() < 0){
+            throw new EdunovaException("Početno stanje ne može biti negativno");
         }
     }
 
